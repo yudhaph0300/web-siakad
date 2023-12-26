@@ -1,0 +1,12 @@
+.navbar {
+   font-family: 'Raleway', sans-serif;
+   font-size: 14px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: normal;
+}
+
+.nav-item {
+   margin-left: 24px;
+   font-size: 16px;
+}

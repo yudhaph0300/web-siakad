@@ -1,0 +1,101 @@
+body {
+   font-family: 'Roboto', sans-serif;
+   font-size: 14px;
+   font-style: normal;
+   font-weight: 300;
+   line-height: normal;
+   color: #1a1a1a;
+}
+
+/* Font */
+.raleway {
+   font-family: 'Raleway', sans-serif;
+   font-style: normal;
+   line-height: normal;
+}
+.roboto {
+   font-family: 'Roboto', sans-serif;
+   font-style: normal;
+   line-height: normal;
+}
+
+.heading-1 {
+   font-weight: 700;
+   font-size: 40px;
+   font-style: normal;
+   line-height: normal;
+}
+
+.heading-2 {
+   font-weight: 700;
+   font-size: 32px;
+   font-style: normal;
+   line-height: normal;
+}
+
+.heading-3 {
+   font-weight: 700;
+   font-size: 28px;
+   font-style: normal;
+   line-height: normal;
+}
+
+.heading-4 {
+   font-weight: 700;
+   font-size: 24px;
+   font-style: normal;
+   line-height: normal;
+}
+
+.heading-5 {
+   font-weight: 700;
+   font-size: 18px;
+   font-style: normal;
+   line-height: normal;
+}
+
+.p-text {
+   font-size: 14px;
+   font-style: normal;
+   line-height: normal;
+}
+
+
+/* Button */
+
+.btn {
+   padding-right: 30px;
+   padding-left: 30px;
+}
+
+.btn-primary {
+   background-color: #1CB78D;
+   border-color: #1CB78D;
+}
+
+.btn-primary:hover {
+   background-color: #34dcaf;
+   border-color: #34dcaf;
+}
+
+.btn-secondary {
+   background-color: #12121E;
+   border-color: #12121E;
+}
+
+.btn-secondary:hover {
+   background-color: #2a2a45;
+   border-color: #2a2a45;
+}
+ 
+
+
+/* Line */
+.line {
+   border-bottom: 2px solid #f6f6f6;
+}
+
+/* Color */
+.color-primary {
+   color: #1CB78D;
+}

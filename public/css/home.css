@@ -1,0 +1,85 @@
+.container-news {
+   padding-top: 90px;
+   padding-bottom: 90px;
+   background-color: #fff;
+}
+
+.card-img-news {
+   width: 100%;
+   height: 211px ;
+   object-fit: cover;
+}
+
+.card-news {
+   border: 0;
+   border-radius: 0;
+}
+
+
+.container-profile {
+   padding-top: 90px;
+   padding-bottom: 90px;
+   background-color: #f6f6f6;
+}
+
+.card-profile {
+   border: 0;
+   border-radius: 0;
+   padding: 30px;
+}
+
+
+.gallery-container {
+   width: 100%; /* Lebar container galeri */
+   overflow-x: auto; /* Membuat galeri dapat discroll secara horizontal */
+   white-space: nowrap; /* Mencegah pemisahan elemen dalam galeri ke baris baru */
+}
+
+.gallery {
+   display: inline-flex; /* Menampilkan gambar secara horizontal */
+   gap: 10px; /* Jarak antar gambar */
+}
+
+.gallery img {
+   max-width: 250px; /* Membuat gambar tidak melebihi lebar container */
+   height: 250px; /* Menyesuaikan tinggi gambar secara proporsional */
+   object-fit: cover;
+}
+
+.gallery-container::-webkit-scrollbar {
+   height: 8px; /* Lebar scrollbar */
+}
+
+.gallery-container::-webkit-scrollbar-thumb {
+   background-color: #1CB78D; /* Warna bagian draggable scrollbar */
+   border-radius: 4px; /* Radius bagian draggable scrollbar */
+}
+
+.gallery-container::-webkit-scrollbar-track {
+   background-color: transparent; /* Warna bagian track scrollbar */
+}
+
+
+
+.container-article {
+   padding-top: 90px;
+   padding-bottom: 90px;
+   background-color: #fff;
+}
+
+.card-img-article {
+   width: 100%;
+   height: 211px ;
+   object-fit: cover;
+}
+
+.tag-article {
+   background-color: #1a1a1a;
+   color: #fff;
+   padding: 10px 0;
+}
+
+.card-article {
+   border: 0;
+   border-radius: 0;
+}
