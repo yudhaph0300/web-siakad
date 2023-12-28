@@ -10,44 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
-    public function loginForm()
-    {
-        if (Auth::guard('student')->check()) {
-            return redirect()->route('student-dashboard');
-        } elseif (Auth::guard('admin')->check()) {
-            return redirect()->route('admin-dashboard');
-        }
-
-        return view('pages.auth.student.login');
-    }
-
-    public function login(Request $request)
-    {
-        // Validasi data yang diterima dari form login
-        $credentials = $request->only('username', 'password');
-
-        // Melakukan otentikasi
-        if (Auth::guard('student')->attempt($credentials)) {
-            // Jika otentikasi berhasil, alihkan ke halaman dashboard admin
-            return redirect()->route('student-dashboard');
-            // dd(auth());
-        } elseif (Auth::guard('admin')->attempt($credentials)) {
-            return redirect()->route('admin-dashboard');
-        } else {
-            // Jika otentikasi gagal, kembalikan ke halaman login dengan pesan error
-            return redirect()->route('student-form-login')->with('error', 'Login gagal. Periksa kembali username dan password Anda.');
-        }
-    }
-
-    public function logout()
-    {
-        Auth::guard('student')->logout(); // Lakukan proses logout dengan guard 'admin'
-
-        return redirect()->route('student-form-login');
-    }
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         //

@@ -44,7 +44,7 @@
 
     </ul>
     <div class="account-info">
-        <form id="logout-form" action="{{ route('admin-post-logout') }}" method="POST" style="display: none;">
+        <form id="logout-form" action="{{ route('auth-post-logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
 
