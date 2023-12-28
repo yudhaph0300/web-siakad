@@ -3,7 +3,7 @@
 @section('main-content')
     <div class="app-content">
         <div class="app-content-header shadow-sm">
-            <h1 class="app-content-headerText raleway fw-bold">Dashboard</h1>
+            <h1 class="app-content-headerText raleway fw-bold">Dashboard Siswa</h1>
             <button class="btn btn-primary">
                 Action
             </button>

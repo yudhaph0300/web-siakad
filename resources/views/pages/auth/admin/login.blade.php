@@ -5,17 +5,17 @@
         <div class="d-flex justify-content-center w-100">
             <div class="card">
                 <div class="card-body">
-                    <p class="heading-5 fw-bold my-0 mb-2">Selamat datang di,</p>
+                    <p class="heading-5 fw-bold my-0 mb-2">Selamat datang admin,</p>
                     <h2 class="heading-2 raleway color-primary">MTs Riyadlatul Fallah</h2>
                     <p class="p-text">"Menyongsong Ilmu dengan Kehidupan Beragama"
                     </p>
 
                     {{-- Form --}}
-                    <form method="POST" action="{{ route('student-post-login') }}">
+                    <form method="POST" action="{{ route('admin-post-login') }}">
                         @csrf
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
-                            <input type="number" class="form-control" id="username" name="username">
+                            <input type="text" class="form-control" id="username" name="username">
                         </div>
 
                         <div class="mb-3">
@@ -30,10 +30,7 @@
                             </div>
                         </div>
 
-                        <p class="p-text text-center">Terjadi masalah ketika melakukan login? <span><a href="#"
-                                    class="btn-link">hubungi
-                                    admin</a></span>
-                        </p>
+
 
                         <button type="submit" class="btn btn-primary w-100">Login</button>
                     </form>
