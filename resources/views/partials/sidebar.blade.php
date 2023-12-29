@@ -5,40 +5,34 @@
         </div>
     </div>
     <ul class="sidebar-list">
-        <li class="sidebar-list-item active">
-            <a href="#">
+        <li class="sidebar-list-item {{ $title === 'dashboard' ? 'active' : '' }}">
+            <a href="/admin/dashboard">
                 <i class="bi bi-grid"></i>
-                <span>Home</span>
-            </a>
-        </li>
-
-        <li class="sidebar-list-item">
-            <a href="#">
-                <i class="bi bi-people"></i>
-                <span>Data User</span>
+                <span>Dashboard</span>
             </a>
         </li>
 
         @if (Auth::check() && Auth::user()->role == 'admin')
             {{-- Data Master --}}
-            <li class="sidebar-list-item">
-                <a href="#">
+            <li class="sidebar-list-item {{ $title === 'data siswa' ? 'active' : '' }}">
+                <a href="/admin/data-siswa">
                     <i class="bi bi-collection"></i>
                     <span>Data Siswa</span>
                 </a>
             </li>
-            <li class="sidebar-list-item">
-                <a href="#">
+            <li class="sidebar-list-item {{ $title === 'data guru' ? 'active' : '' }}">
+                <a href="/admin/data-guru">
                     <i class="bi bi-collection"></i>
                     <span>Data Guru</span>
                 </a>
             </li>
-            <li class="sidebar-list-item">
-                <a href="#">
+
+            {{-- <li class="sidebar-list-item">
+                <a href="/admin/data-kelas {{ $title === 'data kelas' ? 'active' : '' }}">
                     <i class="bi bi-collection"></i>
                     <span>Data Kelas</span>
                 </a>
-            </li>
+            </li> --}}
         @endif
 
 

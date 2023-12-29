@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,7 @@ use App\Http\Controllers\StudentController;
 */
 
 Route::get('/', function () {
-    return view('pages.guest.index');
+    return view('pages.guest.index', ["title" => 'home']);
 });
 
 Route::get('/test', function () {
@@ -34,8 +35,10 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('auth-post-logou
 Route::prefix('admin')->group(function () {
     Route::middleware(['auth:admin'])->group(function () {
         Route::get('/dashboard', function () {
-            return view('pages.admin.index');
+            return view('pages.admin.index', ["title" => 'dashboard']);
         })->name('admin-dashboard');
+        Route::resource('/data-siswa', StudentController::class);
+        Route::resource('/data-guru', TeacherController::class);
     });
 });
 

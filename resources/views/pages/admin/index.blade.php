@@ -1,4 +1,4 @@
-@extends('layouts.dashboard.index')
+@extends('layouts.admin.index')
 
 @section('main-content')
     <div class="app-content">

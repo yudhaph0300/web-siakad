@@ -13,12 +13,18 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-        \App\Models\Student::factory(5)->create();
+        \App\Models\Student::factory(48)->create();
         \App\Models\Admin::factory()->create([
             'name' => 'Admin',
             'username' => '123123',
             'password' => bcrypt('admin'),
             'role' => 'admin'
+        ]);
+        \App\Models\Student::factory()->create([
+            'name' => 'Student',
+            'username' => '123123',
+            'password' => bcrypt('student'),
+            'role' => 'student'
         ]);
     }
 }

@@ -32,10 +32,26 @@
 }
 
 
-/* Home */
+/* Dashboard */
 .card-dashboard {
    border: 0;
    border-radius: 0;
    padding: 30px;
    background-color: #fff;
+}
+
+
+/* Data siswa */
+.table td,
+.table th {
+   padding-top: 20px;
+   padding-bottom: 20px;
+}
+
+.card {
+   border: none;
+}
+
+.table {
+   --bs-table-hover-bg: #1cb78e47;
 }

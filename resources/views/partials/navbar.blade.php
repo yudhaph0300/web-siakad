@@ -8,7 +8,8 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Beranda</a>
+                    <a class="nav-link {{ $title === 'home' ? 'active' : '' }}" aria-current="page"
+                        href="#">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Berita</a>
@@ -17,7 +18,21 @@
                     <a class="nav-link" href="#">Tentang Kami</a>
                 </li>
                 <li class="nav-item">
-                    <button class="btn btn-primary rounded-pill">Login</button>
+                    @if (Auth::guard('admin')->check())
+                        <a href="/admin/dashboard" class="btn btn-light rounded-pill">
+                            <i class="bi bi-grid me-2"></i>Back to Dashboard
+                        </a>
+                    @elseif (Auth::guard('student')->check())
+                        <a href="/student/dashboard" class="btn btn-light rounded-pill">
+                            <i class="bi bi-grid me-2"></i>Back to Dashboard
+                        </a>
+                    @else
+                        <a href="/login" class="btn btn-primary rounded-pill">
+                            <i class="bi bi-box-arrow-in-right me-2"></i>Login
+                        </a>
+                    @endif
+
+
                 </li>
             </ul>
         </div>
