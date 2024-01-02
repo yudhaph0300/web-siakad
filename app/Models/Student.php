@@ -12,7 +12,7 @@ class Student extends Authenticatable
 
     // attribut yang dapat di isi
     protected $fillable = [
-        'nis', 'name', 'username', 'password', 'role'
+        'nis', 'name', 'username', 'password', 'role', 'image'
     ];
 
     protected $hidden = [

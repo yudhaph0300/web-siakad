@@ -1,10 +1,21 @@
+:root {
+   --app-bg: #f6f6f6;
+   --white-color: #fff;
+   --dark-color: #1a1a1a;
+   --action-color: #1CB78D;
+   --primary-color: #1CB78D;
+   --secondary-color: #12121E;
+   --danger-color: #CA3232;
+   --warning-color: #EECA32;
+}
+
 body {
    font-family: 'Roboto', sans-serif;
    font-size: 14px;
    font-style: normal;
    font-weight: 300;
    line-height: normal;
-   color: #1a1a1a;
+   color: var(--dark-color);
 }
 
 /* Font */
@@ -13,6 +24,7 @@ body {
    font-style: normal;
    line-height: normal;
 }
+
 .roboto {
    font-family: 'Roboto', sans-serif;
    font-style: normal;
@@ -69,8 +81,8 @@ body {
 }
 
 .btn-primary {
-   background-color: #1CB78D;
-   border-color: #1CB78D;
+   background-color: var(--primary-color);
+   border-color: var(--primary-color);
 }
 
 .btn-primary:hover {
@@ -78,16 +90,61 @@ body {
    border-color: #34dcaf;
 }
 
+.btn-primary:focus,
+.btn-primary.focus {
+   color: var(--primary-color);
+   background-color: var(--white-color) !important;
+   border-color: var(--white-color) !important;
+   box-shadow: 0 0 0 0.2rem rgba(52, 220, 175, 0.3) !important;
+}
+
+.btn-outline-primary {
+   color: var(--primary-color);
+   background-color: var(--white-color);
+   border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+   background-color: #34dcaf;
+   border-color: #34dcaf;
+}
+
+.btn-outline-primary:focus,
+.btn-outline-primary.focus {
+   color: var(--primary-color);
+   background-color: var(--white-color) !important;
+   border-color: var(--white-color) !important;
+   box-shadow: 0 0 0 0.2rem rgba(52, 220, 175, 0.3) !important;
+}
+
 .btn-secondary {
-   background-color: #12121E;
-   border-color: #12121E;
+   background-color: var(--secondary-color);
+   border-color: var(--secondary-color);
 }
 
 .btn-secondary:hover {
    background-color: #2a2a45;
    border-color: #2a2a45;
 }
- 
+
+.btn-secondary:focus,
+.btn-secondary.focus {
+   color: var(--secondary-color);
+   background-color: var(--white-color) !important;
+   border-color: var(--white-color) !important;
+   box-shadow: 0 0 0 0.2rem rgba(42, 42, 69, 0.5) !important;
+}
+
+.btn-danger {
+   background-color: var(--danger-color);
+   border-color: var(--danger-color);
+}
+
+.btn-danger:hover {
+   background-color: #e04b4b;
+   border-color: #e04b4b;
+}
+
 
 
 /* Line */
@@ -97,5 +154,13 @@ body {
 
 /* Color */
 .color-primary {
-   color: #1CB78D;
+   color: var(--primary-color);
+}
+
+.color-warning {
+   color: var(--warning-color);
+}
+
+.color-danger {
+   color: var(--danger-color);
 }

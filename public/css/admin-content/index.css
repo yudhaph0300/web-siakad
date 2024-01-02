@@ -55,3 +55,32 @@
 .table {
    --bs-table-hover-bg: #1cb78e47;
 }
+
+.custom-select {
+   display: inline-block;
+   width: 100%;
+   cursor: pointer;
+   padding: 10px 15px;
+   border: 1px solid #ced4da;
+   border-radius: 5px;
+   background-color: #fff;
+}
+
+.custom-search {
+   padding: 10px 15px;
+   border: 1px solid #ced4da;
+   border-radius: 5px;
+   outline: none;
+}
+
+.btn-filter {
+   padding: 10px 15px;
+}
+
+.btn-custom-icon {
+   width: 100%;
+   margin: 0 4px;
+   text-decoration: none;
+   font-size: 18px;
+   line-height: 24px;
+}

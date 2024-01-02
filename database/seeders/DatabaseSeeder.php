@@ -21,10 +21,18 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin'
         ]);
         \App\Models\Student::factory()->create([
-            'name' => 'Student',
+            'name' => 'Mohammad Yudha Pamungkas',
             'username' => '123123',
             'password' => bcrypt('student'),
-            'role' => 'student'
+            'role' => 'student',
+            'image' => 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        ]);
+        \App\Models\Student::factory()->create([
+            'name' => 'Rafi Sabyan',
+            'username' => '121212',
+            'password' => bcrypt('student'),
+            'role' => 'student',
+            'image' => 'https://ik.imagekit.io/yudha/image%20siakad/WhatsApp%20Image%202024-01-02%20at%2016.28.53_5a6fb5d5_mYG3hO5m1.jpg?updatedAt=1704187847297'
         ]);
     }
 }

@@ -34,7 +34,7 @@ class StudentController extends Controller
 
         $data = $query->paginate(10);
 
-        return view('pages.admin.data-siswa', compact('title', 'data', 'search', 'sort', 'kelas', 'dataLength'));
+        return view('pages.admin.data-siswa.index', compact('title', 'data', 'search', 'sort', 'kelas', 'dataLength'));
     }
 
     /**
@@ -50,38 +50,57 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Student $student)
+    public function show($student)
     {
-        //
+        $student = Student::findOrFail($student);
+        $title = 'data siswa';
+        return view('pages.admin.data-siswa.show', compact('student', 'title'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Student $student)
+    public function edit($student)
     {
-        //
+        $student = Student::findOrFail($student);
+        $title = 'data siswa';
+        return view('pages.admin.data-siswa.edit', compact('student', 'title'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request, $student)
     {
-        //
+        $student = Student::findOrFail($student);
+
+        $rules = [
+            'nis' => 'required|max:10',
+            'name' => 'required|max:55',
+            'username' => 'required|max:25',
+        ];
+
+
+        $validatedData = $request->validate($rules);
+
+        Student::where('id', $student->id)
+            ->update($validatedData);
+        return redirect('/admin/data-siswa');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Student $student)
+    public function destroy($student)
     {
-        //
+        $student = Student::findOrFail($student);
+        Student::destroy($student->id);
+
+        return redirect('/admin/data-siswa');
     }
 }
