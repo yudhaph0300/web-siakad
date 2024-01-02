@@ -35,6 +35,15 @@
             </li> --}}
         @endif
 
+        @if (Auth::check() && Auth::user()->role == 'teacher')
+            <li class="sidebar-list-item {{ $title === 'data penilaian' ? 'active' : '' }}">
+                <a href="/teacher/data-penilaian">
+                    <i class="bi bi-collection"></i>
+                    <span>Data Penilaian</span>
+                </a>
+            </li>
+        @endif
+
 
     </ul>
     <div class="account-info">

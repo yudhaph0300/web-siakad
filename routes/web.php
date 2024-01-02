@@ -50,3 +50,12 @@ Route::prefix('student')->group(function () {
         })->name('student-dashboard');
     });
 });
+
+// For teacher
+Route::prefix('teacher')->group(function () {
+    Route::middleware(['auth:teacher'])->group(function () {
+        Route::get('/dashboard', function () {
+            return view('pages.teacher.index', ["title" => 'dashboard']);
+        })->name('teacher-dashboard');
+    });
+});

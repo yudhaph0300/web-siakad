@@ -16,6 +16,8 @@ class Authenticate extends Middleware
             return $request->expectsJson() ? null : route('auth-form-login');
         } elseif ($request->is('student/*')) {
             return $request->expectsJson() ? null : route('auth-form-login');
+        } elseif ($request->is('teacher/*')) {
+            return $request->expectsJson() ? null : route('auth-form-login');
         }
         return $request->expectsJson() ? null : route('login');
     }
