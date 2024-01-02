@@ -42,7 +42,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        $title = 'data siswa';
+        return view('pages.admin.data-siswa.create', compact('title'));
     }
 
     /**
@@ -50,6 +51,19 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'nis' => 'required|max:10',
+            'name' => 'required|max:55',
+            'username' => 'required|max:25',
+        ]);
+
+        $validatedData['image'] = 'https://images.pexels.com/photos/19384491/pexels-photo-19384491/free-photo-of-a-woman-holding-a-camera.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load';
+        $validatedData['role'] = 'student';
+        $validatedData['password'] = bcrypt('student');
+
+        Student::create($validatedData);
+
+        return redirect('/admin/data-siswa');
     }
 
     /**

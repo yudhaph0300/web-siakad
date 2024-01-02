@@ -67,8 +67,8 @@
                                     class="bi bi-file-earmark-text me-2"></i>Import</button>
                         </div>
                         <div class="col-md-2">
-                            <button class="btn btn-outline-primary rounded-pill w-100"><i
-                                    class="bi bi-person-add me-2"></i>Tambah</button>
+                            <a href="/admin/data-siswa/create" class="btn btn-outline-primary rounded-pill w-100"><i
+                                    class="bi bi-person-add me-2"></i>Tambah</a>
                         </div>
                     </div>
 
@@ -84,6 +84,11 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @if ($dataLength === 0)
+                                <tr class="text-center">
+                                    <td colspan="5">Data not found</td>
+                                </tr>
+                            @endif
                             @foreach ($data as $index => $student)
                                 <tr>
                                     <td class="text-center">{{ $index + 1 }}</td>
