@@ -32,7 +32,7 @@ class StudentController extends Controller
 
         $dataLength = $query->count();
 
-        $data = $query->paginate(10);
+        $data = $query->paginate(10)->appends(request()->query());
 
         return view('pages.admin.data-siswa.index', compact('title', 'data', 'search', 'sort', 'kelas', 'dataLength'));
     }
