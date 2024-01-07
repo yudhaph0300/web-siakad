@@ -18,9 +18,11 @@
                             <div class="mb-3">
                                 <select id="kelas" name="kelas" class="form-select custom-select"
                                     aria-label="Default select example">
-                                    <option value="" selected>Semua Kelas</option>
-                                    <option value="1">Kelas 1</option>
-                                    <option value="2">Kelas 2</option>
+                                    <option value="" {{ $kelas === null ? 'selected' : '' }}>Semua Kelas</option>
+                                    @foreach ($classnames as $class)
+                                        <option value="{{ $class->id }}" {{ $kelas == $class->id ? 'selected' : '' }}>
+                                            Kelas {{ $class->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -79,7 +81,8 @@
                                 <th scope="col" class="text-center">No</th>
                                 <th scope="col">Nis</th>
                                 <th scope="col">Nama</th>
-                                <th scope="col">Username</th>
+                                <th scope="col">Jenis Kelamin</th>
+                                <th scope="col">Kelas</th>
                                 <th scope="col" class="text-center">Actions</th>
                             </tr>
                         </thead>
@@ -94,7 +97,13 @@
                                     <td class="text-center">{{ $index + 1 }}</td>
                                     <td>{{ $student->nis }}</td>
                                     <td>{{ $student->name }}</td>
-                                    <td>{{ $student->username }}</td>
+                                    @if ($student->gender === 1)
+                                        <td>Laki-laki</td>
+                                    @endif
+                                    @if ($student->gender === 2)
+                                        <td>Perempuan</td>
+                                    @endif
+                                    <td>{{ $student->classname->name }}</td>
                                     <td class="text-center">
                                         <a href="/admin/data-siswa/{{ $student->id }}"
                                             class="btn-custom-icon color-primary"><i class="bi bi-info-circle"></i></a>

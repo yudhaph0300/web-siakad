@@ -12,10 +12,24 @@ class Student extends Authenticatable
 
     // attribut yang dapat di isi
     protected $fillable = [
-        'nis', 'name', 'username', 'password', 'role', 'image'
+        'username',
+        'password',
+        'nis',
+        'name',
+        'gender',
+        'birthday',
+        'address',
+        'image',
+        'id_class',
+        'role'
     ];
 
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function classname()
+    {
+        return $this->belongsTo(ClassName::class, 'id_class');
+    }
 }

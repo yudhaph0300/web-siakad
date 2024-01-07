@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ClassName;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -16,13 +17,21 @@ class StudentController extends Controller
         $sort = $request->sort ?: 'desc';
         $kelas = $request->kelas;
         $title = 'data siswa';
+        $classnames = ClassName::all();
         $query = Student::query();
 
         // Filter berdasarkan pencarian
         if ($search) {
-            $query->where('name', 'LIKE', '%' . $search . '%')
+            $query->where('username', 'LIKE', '%' . $search . '%')
                 ->orWhere('nis', 'LIKE', '%' . $search . '%')
-                ->orWhere('username', 'LIKE', '%' . $search . '%');
+                ->orWhere('name', 'LIKE', '%' . $search . '%')
+                ->orWhere('gender', 'LIKE', '%' . $search . '%')
+                ->orWhere('birthday', 'LIKE', '%' . $search . '%')
+                ->orWhere('address', 'LIKE', '%' . $search . '%');
+        }
+
+        if ($kelas) {
+            $query->where('id_class', $kelas);
         }
 
         // Pengurutan berdasarkan created_at
@@ -34,7 +43,7 @@ class StudentController extends Controller
 
         $data = $query->paginate(10)->appends(request()->query());
 
-        return view('pages.admin.data-siswa.index', compact('title', 'data', 'search', 'sort', 'kelas', 'dataLength'));
+        return view('pages.admin.data-siswa.index', compact('title', 'data', 'classnames', 'search', 'sort', 'kelas', 'dataLength'));
     }
 
     /**
