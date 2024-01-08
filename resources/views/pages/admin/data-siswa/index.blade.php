@@ -60,7 +60,7 @@
                             <p class="raleway  mb-4 mt-3">
                                 Menampilkan {{ $dataLength }} data dari data siswa dengan filter
                                 {{ $search ? $search . ', ' : '' }}
-                                {{ $kelas ? 'kelas ' . $kelas . ', ' : 'semua kelas, ' }}
+                                {{ $kelas ? 'kelas ' . $data[0]->classname->name . ', ' : 'semua kelas, ' }}
                                 {{ $sort === 'desc' ? 'terbaru.' : 'terlama.' }}
                             </p>
                         </div>
