@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
             'id_class' => 1
         ]);
 
-        \App\Models\Student::factory(50)->create();
+        \App\Models\Student::factory(250)->create();
 
         \App\Models\Teacher::factory(50)->create();
         \App\Models\Admin::factory()->create([

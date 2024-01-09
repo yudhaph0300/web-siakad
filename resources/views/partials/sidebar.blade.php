@@ -26,13 +26,12 @@
                     <span>Data Guru</span>
                 </a>
             </li>
-
-            {{-- <li class="sidebar-list-item">
-                <a href="/admin/data-kelas {{ $title === 'data kelas' ? 'active' : '' }}">
+            <li class="sidebar-list-item {{ $title === 'data kelas' ? 'active' : '' }}">
+                <a href="/admin/data-kelas ">
                     <i class="bi bi-collection"></i>
                     <span>Data Kelas</span>
                 </a>
-            </li> --}}
+            </li>
         @endif
 
         @if (Auth::check() && Auth::user()->role == 'teacher')

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ClassController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 
@@ -39,6 +40,7 @@ Route::prefix('admin')->group(function () {
         })->name('admin-dashboard');
         Route::resource('/data-siswa', StudentController::class);
         Route::resource('/data-guru', TeacherController::class);
+        Route::resource('/data-kelas', ClassController::class);
     });
 });
 
