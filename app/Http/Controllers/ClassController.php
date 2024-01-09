@@ -12,7 +12,8 @@ class ClassController extends Controller
      */
     public function index()
     {
-        $data = ClassName::withCount('students')->get();
+        $data = ClassName::withCount('students')->with('teacher')->with('year')->get();
+
         $title = 'data kelas';
         return view('pages.admin.data-kelas.index', compact('title', 'data'));
     }
@@ -38,7 +39,7 @@ class ClassController extends Controller
      */
     public function show($className)
     {
-        $class = ClassName::with('students')->withCount('students')->findOrFail($className);
+        $class = ClassName::with('students')->withCount('students')->with('teacher')->with('year')->findOrFail($className);
         $title = 'data kelas';
         return view('pages.admin.data-kelas.show', compact('class', 'title'));
     }

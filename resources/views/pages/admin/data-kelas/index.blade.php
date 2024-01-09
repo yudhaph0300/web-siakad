@@ -31,9 +31,11 @@
                         <thead class="table-dark">
                             <tr>
                                 <th scope="col" class="text-center">No</th>
-                                <th scope="col">Nama Kelas</th>
-                                <th scope="col">Jumlah Siswa</th>
-                                <th scope="col">Wali Kelas</th>
+                                <th scope="col" class="text-center">Nama Kelas</th>
+                                <th scope="col" class="text-center">Jumlah Siswa</th>
+                                <th scope="col" class="text-center">Wali Kelas</th>
+                                <th scope="col" class="text-center">Tahun Pelajaran</th>
+                                <th scope="col" class="text-center">Semester</th>
                                 <th scope="col" class="text-center">Actions</th>
                             </tr>
                         </thead>
@@ -42,9 +44,11 @@
                             @foreach ($data as $index => $class)
                                 <tr>
                                     <td class="text-center">{{ $index + 1 }}</td>
-                                    <td>{{ $class->name }}</td>
-                                    <td>{{ $class->students_count }}</td>
-                                    <td>Wali kelas value</td>
+                                    <td class="text-center">{{ $class->name }}</td>
+                                    <td class="text-center">{{ $class->students_count }}</td>
+                                    <td>{{ $class->teacher->name }}</td>
+                                    <td class="text-center">{{ $class->year->name }}</td>
+                                    <td class="text-center">{{ $class->year->semester }}</td>
                                     <td class="text-center">
                                         <a href="/admin/data-kelas/{{ $class->id }}"
                                             class="btn-custom-icon color-primary"><i class="bi bi-info-circle"></i></a>

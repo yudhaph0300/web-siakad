@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ClassName;
-use App\Http\Requests\StoreClassNameRequest;
-use App\Http\Requests\UpdateClassNameRequest;
+use App\Models\AcademicYear;
+use App\Http\Requests\StoreAcademicYearRequest;
+use App\Http\Requests\UpdateAcademicYearRequest;
 
-class ClassNameController extends Controller
+class AcademicYearController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class ClassNameController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreClassNameRequest $request)
+    public function store(StoreAcademicYearRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class ClassNameController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(ClassName $className)
+    public function show(AcademicYear $academicYear)
     {
         //
     }
@@ -43,7 +43,7 @@ class ClassNameController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ClassName $className)
+    public function edit(AcademicYear $academicYear)
     {
         //
     }
@@ -51,7 +51,7 @@ class ClassNameController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateClassNameRequest $request, ClassName $className)
+    public function update(UpdateAcademicYearRequest $request, AcademicYear $academicYear)
     {
         //
     }
@@ -59,7 +59,7 @@ class ClassNameController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ClassName $className)
+    public function destroy(AcademicYear $academicYear)
     {
         //
     }

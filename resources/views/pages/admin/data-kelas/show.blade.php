@@ -21,11 +21,15 @@
                             </tr>
                             <tr>
                                 <td>Wali Kelas</td>
-                                <td>Value wali kelas</td>
+                                <td>{{ $class->teacher->name }}</td>
                             </tr>
                             <tr>
                                 <td>Jumlah Siswa</td>
                                 <td>{{ $class->students_count }}</td>
+                            </tr>
+                            <tr>
+                                <td>Tahun Pelajaran</td>
+                                <td>{{ $class->year->name }}</td>
                             </tr>
                         </tbody>
                     </table>
