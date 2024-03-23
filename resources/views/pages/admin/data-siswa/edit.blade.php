@@ -14,10 +14,10 @@
             <div class="card shadow mt-3">
                 <div class="card-body">
                     <div class="row g-3">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <img src="{{ $student->image }}" class="img-fluid" alt="">
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-8">
                             <form action="/admin/data-siswa/{{ $student->id }}" method="POST"
                                 enctype="multipart/form-data">
                                 @method('put')
@@ -38,6 +38,51 @@
                                         class="form-control custom-search" id="username" name="username"
                                         placeholder="Masukan username siswa">
                                 </div>
+
+
+
+                                <div class="mb-3">
+                                    <label for="id_class" class="form-label">Kelas</label>
+                                    <select id="id_class" name="id_class" class="form-select custom-select"
+                                        aria-label="Default select example">
+                                        @foreach ($classnames as $class)
+                                            <option value="{{ $class->id }}"
+                                                {{ $class->id == $student->classname->id ? 'selected' : '' }}>
+                                                Kelas {{ $class->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+
+                                <div class="mb-3">
+                                    <label for="gender" class="form-label">Jenis Kelamin</label>
+                                    <select id="gender" name="gender" class="form-select custom-select"
+                                        aria-label="Default select example">
+
+                                        <option value="{{ 1 }}" {{ $student->gender == 1 ? 'selected' : '' }}>
+                                            Laki-Laki
+                                        </option>
+                                        <option value="{{ 2 }}" {{ $student->gender == 2 ? 'selected' : '' }}>
+                                            Perempuan
+                                        </option>
+
+
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="birthday" class="form-label">Tanggal Lahir</label>
+                                    <input type="text" value="{{ $student->birthday }}"
+                                        class="form-control custom-search" id="birthday" name="birthday"
+                                        placeholder="Masukan tanggal lahir siswa">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">Alamat</label>
+                                    <input type="text" value="{{ $student->address }}"
+                                        class="form-control custom-search" id="address" name="address"
+                                        placeholder="Masukan alamat siswa">
+                                </div>
+
                                 <div class="mb-3">
                                     <div class="row g-2">
                                         <div class="col">

@@ -80,7 +80,7 @@ class StudentController extends Controller
      */
     public function show($student)
     {
-        $student = Student::findOrFail($student);
+        $student = Student::with('classname')->findOrFail($student);
         $title = 'data siswa';
         return view('pages.admin.data-siswa.show', compact('student', 'title'));
     }
@@ -91,8 +91,9 @@ class StudentController extends Controller
     public function edit($student)
     {
         $student = Student::findOrFail($student);
+        $classnames = ClassName::all();
         $title = 'data siswa';
-        return view('pages.admin.data-siswa.edit', compact('student', 'title'));
+        return view('pages.admin.data-siswa.edit', compact('student', 'title', 'classnames'));
     }
 
     /**

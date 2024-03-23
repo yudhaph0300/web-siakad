@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AcademicYear;
 use App\Models\ClassName;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class ClassController extends Controller
@@ -47,9 +49,13 @@ class ClassController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ClassName $className)
+    public function edit($className)
     {
-        //
+        $class = ClassName::with('students')->withCount('students')->with('teacher')->with('year')->findOrFail($className);
+        $teachers = Teacher::all();
+        $years = AcademicYear::all();
+        $title = 'data kelas';
+        return view('pages.admin.data-kelas.edit', compact('class', 'title', 'teachers', 'years'));
     }
 
     /**

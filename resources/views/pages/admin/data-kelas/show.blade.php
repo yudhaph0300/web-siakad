@@ -41,8 +41,7 @@
                                 <th scope="col">Nis</th>
                                 <th scope="col">Nama</th>
                                 <th scope="col">Jenis Kelamin</th>
-                                <th scope="col">Kelas</th>
-                                <th scope="col" class="text-center">Actions</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -57,15 +56,8 @@
                                     @if ($student->gender === 2)
                                         <td>Perempuan</td>
                                     @endif
-                                    <td>{{ $student->classname->name }}</td>
-                                    <td class="text-center">
-                                        <a href="/admin/data-siswa/{{ $student->id }}"
-                                            class="btn-custom-icon color-primary"><i class="bi bi-info-circle"></i></a>
-                                        <a href="/admin/data-siswa/{{ $student->id }}/edit"
-                                            class="btn-custom-icon color-warning"><i class="bi bi-pencil-square"></i></a>
 
 
-                                    </td>
                                 </tr>
                             @endforeach
 
