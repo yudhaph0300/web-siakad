@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('class_names', function (Blueprint $table) {
+        Schema::create('learnings', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->unsignedBigInteger('id_academic_year')->unsigned();
-            $table->unsignedBigInteger('id_teacher');
+            $table->foreignId('id_class');
+            $table->foreignId('id_lesson');
+            $table->foreignId('id_teacher')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('class_names');
+        Schema::dropIfExists('learnings');
     }
 };

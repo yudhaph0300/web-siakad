@@ -22,9 +22,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('image');
             $table->string('role');
-            $table->unsignedBigInteger('id_class');
-
-            $table->foreign('id_class')->references('id')->on('class_names');
+            $table->foreignId('id_class')->nullable();
             $table->timestamps();
         });
     }
