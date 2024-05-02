@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\AcademicYear;
 use App\Http\Requests\StoreAcademicYearRequest;
 use App\Http\Requests\UpdateAcademicYearRequest;
+use App\Models\Student;
+use Illuminate\Http\Request;
 
 class AcademicYearController extends Controller
 {
@@ -13,54 +15,30 @@ class AcademicYearController extends Controller
      */
     public function index()
     {
-        //
+        $title = 'data tahun pelajaran';
+        $tapels = AcademicYear::all();
+
+        return view('pages.admin.data-tahun-pelajaran.index', compact('title', 'tapels'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreAcademicYearRequest $request)
+    public function store(Request $request)
     {
-        //
-    }
+        $validateData = $request->validate([
+            'tahun_pelajaran' => 'required|min:9|max:9',
+            'semester' => 'required',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(AcademicYear $academicYear)
-    {
-        //
-    }
+        $tapel = new AcademicYear([
+            'tahun_pelajaran' => $request->tahun_pelajaran,
+            'semester' => $request->semester,
+        ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(AcademicYear $academicYear)
-    {
-        //
-    }
+        $tapel->save($validateData);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateAcademicYearRequest $request, AcademicYear $academicYear)
-    {
-        //
-    }
+        // Setting agar siswa tidak memiliki kelas
+        Student::query()->update(['id_class' => null]);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(AcademicYear $academicYear)
-    {
-        //
+        return redirect('/admin/data-tahun-pelajaran');
     }
 }
