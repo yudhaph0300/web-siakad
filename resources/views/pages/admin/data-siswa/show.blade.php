@@ -34,7 +34,14 @@
                                     </tr>
                                     <tr>
                                         <td>Kelas</td>
-                                        <td>{{ $student->classname->name }}</td>
+                                        <td>
+                                            @if ($student->classname)
+                                                {{ $student->classname->name }}
+                                            @else
+                                                Siswa belum memiliki kelas
+                                            @endif
+                                        </td>
+                                        
                                     </tr>
                                     <tr>
                                         <td>Jenis Kelamin</td>

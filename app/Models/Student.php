@@ -11,17 +11,8 @@ class Student extends Authenticatable
     use HasFactory;
 
     // attribut yang dapat di isi
-    protected $fillable = [
-        'username',
-        'password',
-        'nis',
-        'name',
-        'gender',
-        'birthday',
-        'address',
-        'image',
-        'id_class',
-        'role'
+    protected $guarded = [
+        'id',
     ];
 
     protected $hidden = [
@@ -31,5 +22,15 @@ class Student extends Authenticatable
     public function classname()
     {
         return $this->belongsTo(ClassName::class, 'id_class');
+    }
+
+    public function lesson_value()
+    {
+        return $this->hasOne(LessonValue::class);
+    }
+
+    public function class_member()
+    {
+        return $this->hasMany(ClassMember::class);
     }
 }

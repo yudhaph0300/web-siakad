@@ -15,35 +15,26 @@
                     <form class="row align-items-end g-3" method="GET" action="{{ url('/admin/data-siswa') }}">
                         @csrf
                         <div class="col-md-3">
-                            <div class="mb-3">
+                            <div class="">
                                 <select id="kelas" name="kelas" class="form-select custom-select"
                                     aria-label="Default select example">
-                                    <option value="" {{ $kelas === null ? 'selected' : '' }}>Semua Kelas</option>
-                                    @foreach ($classnames as $class)
-                                        <option value="{{ $class->id }}" {{ $kelas == $class->id ? 'selected' : '' }}>
-                                            Kelas {{ $class->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="mb-3">
+                                    <option value="" selected>Semua Kelas</option>
+                                    <option value="">Opsi</option>
+                                    <option value="">Opsi</option>
+                                    <option value="">Opsi</option>
 
-                                <select id="sort" name="sort" class="form-select custom-select">
-                                    <option value="desc" {{ $sort === 'desc' || !$sort ? 'selected' : '' }}>Terbaru
-                                    </option>
-                                    <option value="asc" {{ $sort === 'asc' ? 'selected' : '' }}>Terlama</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="mb-3">
-                                <input type="text" value="{{ $search }}" class="form-control custom-search"
-                                    id="search" name="search" placeholder="Masukan keyword">
+
+                        <div class="col-md-6">
+                            <div class="">
+                                <input type="text" value="" class="form-control custom-search" id="search"
+                                    name="search" placeholder="Masukan keyword">
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="mb-3">
+                            <div class="">
                                 <button type="submit" class="btn btn-primary btn-filter w-100"><i
                                         class="bi bi-filter me-2"></i>Filter</button>
                             </div>
@@ -58,10 +49,7 @@
                     <div class="row g-3">
                         <div class="col-md-8">
                             <p class="raleway  mb-4 mt-3">
-                                Menampilkan {{ $dataLength }} data dari data siswa dengan filter
-                                {{ $search ? $search . ', ' : '' }}
-                                {{ $kelas ? 'kelas ' . $data[0]->classname->name . ', ' : 'semua kelas, ' }}
-                                {{ $sort === 'desc' ? 'terbaru.' : 'terlama.' }}
+                                Jumlah seluruh siswa adalah {{ $data_student_length }}
                             </p>
                         </div>
                         <div class="col-md-2">
@@ -82,17 +70,17 @@
                                 <th scope="col">Nis</th>
                                 <th scope="col">Nama</th>
                                 <th scope="col">Jenis Kelamin</th>
-                                <th scope="col">Kelas</th>
+                                <th scope="col">Kelas Saat Ini</th>
                                 <th scope="col" class="text-center">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @if ($dataLength === 0)
+                            @if ($data_student_length === 0)
                                 <tr class="text-center">
                                     <td colspan="5">Data not found</td>
                                 </tr>
                             @endif
-                            @foreach ($data as $index => $student)
+                            @foreach ($data_student as $index => $student)
                                 <tr>
                                     <td class="text-center">{{ $index + 1 }}</td>
                                     <td>{{ $student->nis }}</td>
@@ -103,7 +91,14 @@
                                     @if ($student->gender === 2)
                                         <td>Perempuan</td>
                                     @endif
-                                    <td>{{ $student->classname->name }}</td>
+                                    <td>
+                                        @if ($student->classname)
+                                            {{ $student->classname->name }}
+                                        @else
+                                            Siswa belum memiliki kelas
+                                        @endif
+                                    </td>
+
                                     <td class="text-center">
                                         <a href="/admin/data-siswa/{{ $student->id }}"
                                             class="btn-custom-icon color-primary"><i class="bi bi-info-circle"></i></a>
@@ -126,7 +121,7 @@
                         </tbody>
                     </table>
 
-                    {{ $data->links() }}
+                    {{-- {{ $data->links() }} --}}
                 </div>
             </div>
         </div>

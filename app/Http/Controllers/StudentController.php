@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AcademicYear;
 use App\Models\ClassName;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -13,37 +14,13 @@ class StudentController extends Controller
      */
     public function index(Request $request)
     {
-        $search = $request->search;
-        $sort = $request->sort ?: 'desc';
-        $kelas = $request->kelas;
         $title = 'data siswa';
-        $classnames = ClassName::all();
-        $query = Student::query();
+        $academic_year = AcademicYear::findorfail(session()->get('id_academic_year'));
+        $data_class = ClassName::all();
+        $data_student = Student::all();
+        $data_student_length = Student::all()->count();
 
-        // Filter berdasarkan pencarian
-        if ($search) {
-            $query->where('username', 'LIKE', '%' . $search . '%')
-                ->orWhere('nis', 'LIKE', '%' . $search . '%')
-                ->orWhere('name', 'LIKE', '%' . $search . '%')
-                ->orWhere('gender', 'LIKE', '%' . $search . '%')
-                ->orWhere('birthday', 'LIKE', '%' . $search . '%')
-                ->orWhere('address', 'LIKE', '%' . $search . '%');
-        }
-
-        if ($kelas) {
-            $query->where('id_class', $kelas);
-        }
-
-        // Pengurutan berdasarkan created_at
-        if ($sort && in_array($sort, ['asc', 'desc'])) {
-            $query->orderBy('created_at', $sort);
-        }
-
-        $dataLength = $query->count();
-
-        $data = $query->paginate(10)->appends(request()->query());
-
-        return view('pages.admin.data-siswa.index', compact('title', 'data', 'classnames', 'search', 'sort', 'kelas', 'dataLength'));
+        return view('pages.admin.data-siswa.index', compact('title', 'data_student', 'data_class', 'data_student_length'));
     }
 
     /**
@@ -68,6 +45,9 @@ class StudentController extends Controller
 
         $validatedData['image'] = 'https://images.pexels.com/photos/19384491/pexels-photo-19384491/free-photo-of-a-woman-holding-a-camera.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load';
         $validatedData['role'] = 'student';
+        $validatedData['gender'] = 1;
+        $validatedData['birthday'] = '2000-03-31';
+        $validatedData['address'] = 'Malang';
         $validatedData['password'] = bcrypt('student');
 
         Student::create($validatedData);
