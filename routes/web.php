@@ -1,11 +1,16 @@
 <?php
 
+use App\Http\Controllers\AcademicYearController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\LearningController;
+use App\Http\Controllers\LessonController;
+use App\Http\Controllers\LessonValueController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
+use App\Models\LessonValue;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +46,9 @@ Route::prefix('admin')->group(function () {
         Route::resource('/data-siswa', StudentController::class);
         Route::resource('/data-guru', TeacherController::class);
         Route::resource('/data-kelas', ClassController::class);
+        Route::resource('/data-mata-pelajaran', LessonController::class);
+        Route::resource('/data-pembelajaran', LearningController::class);
+        Route::resource('/data-tahun-pelajaran', AcademicYearController::class);
     });
 });
 
@@ -59,5 +67,6 @@ Route::prefix('teacher')->group(function () {
         Route::get('/dashboard', function () {
             return view('pages.teacher.index', ["title" => 'dashboard']);
         })->name('teacher-dashboard');
+        Route::resource('/data-penilaian', LessonValueController::class);
     });
 });
