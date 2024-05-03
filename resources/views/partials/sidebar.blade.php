@@ -32,6 +32,24 @@
                     <span>Data Kelas</span>
                 </a>
             </li>
+            <li class="sidebar-list-item {{ $title === 'data mata pelajaran' ? 'active' : '' }}">
+                <a href="/admin/data-mata-pelajaran ">
+                    <i class="bi bi-collection"></i>
+                    <span>Data Mata Pelajaran</span>
+                </a>
+            </li>
+            <li class="sidebar-list-item {{ $title === 'data pembelajaran' ? 'active' : '' }}">
+                <a href="/admin/data-pembelajaran ">
+                    <i class="bi bi-collection"></i>
+                    <span>Data Pembelajaran</span>
+                </a>
+            </li>
+            <li class="sidebar-list-item {{ $title === 'data tahun pelajaran' ? 'active' : '' }}">
+                <a href="/admin/data-tahun-pelajaran ">
+                    <i class="bi bi-collection"></i>
+                    <span>Data Tahun Pelajaran</span>
+                </a>
+            </li>
         @endif
 
         @if (Auth::check() && Auth::user()->role == 'teacher')
