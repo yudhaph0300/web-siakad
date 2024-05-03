@@ -15,7 +15,7 @@
                         @csrf
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
-                            <input type="number" class="form-control" id="username" name="username">
+                            <input type="text" class="form-control" id="username" name="username">
                         </div>
 
                         <div class="mb-3">
@@ -28,6 +28,25 @@
                                     </span>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <select name="academic_year" class="form-select" aria-label="Default select example">
+                                <option value="" selected>Pilih Tahun Pelajaran</option>
+                                <?= $no = 0 ?>
+
+                                @foreach ($data_academic_year as $year)
+                                    <?= $no++ ?>
+                                    <option value="{{ $year->id }}" @if ($no == 1) selected @endif>
+                                        {{ $year->tahun_pelajaran }}
+                                        @if ($year->semester == 1)
+                                            Ganjil
+                                        @else
+                                            Genap
+                                        @endif
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <p class="p-text text-center">Terjadi masalah ketika melakukan login? <span><a href="#"

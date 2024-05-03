@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AcademicYear;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,15 +17,19 @@ class AuthController extends Controller
         } elseif (Auth::guard('teacher')->check()) {
             return redirect()->route('teacher-dashboard');
         }
+        $data_academic_year = AcademicYear::orderBy('id', 'DESC')->get();
 
-        return view('pages.auth.login');
+        return view('pages.auth.login', [], compact('data_academic_year'));
     }
 
     public function login(Request $request)
     {
         $credentials = $request->only('username', 'password');
-
         // Cek otentikasi untuk Admin
+
+        session(['id_academic_year' => $request->academic_year]);
+
+
         if (Auth::guard('admin')->attempt($credentials)) {
             // Jika otentikasi berhasil untuk Admin, alihkan ke halaman dashboard admin
             return redirect()->route('admin-dashboard');
