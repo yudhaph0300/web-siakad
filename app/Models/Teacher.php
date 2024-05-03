@@ -11,11 +11,21 @@ class Teacher extends Authenticatable
     use HasFactory;
 
     // attribut yang dapat di isi
-    protected $fillable = [
-        'nik', 'name', 'username', 'password', 'role', 'image'
+    protected $guarded = [
+        'id',
     ];
 
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function classname()
+    {
+        return $this->hasMany(ClassName::class);
+    }
+
+    public function learnings()
+    {
+        return $this->hasMany(Learning::class);
+    }
 }

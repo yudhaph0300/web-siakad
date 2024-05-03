@@ -10,9 +10,8 @@ class Admin extends Authenticatable
 {
     use HasFactory;
 
-    // attribut yang dapat di isi
-    protected $fillable = [
-        'name', 'username', 'password', 'role'
+    protected $guarded = [
+        'id',
     ];
 
     protected $hidden = [
