@@ -8,24 +8,29 @@ use Illuminate\Database\Eloquent\Model;
 class ClassName extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'name',
-        'id_teacher',
-        'id_year'
+    protected $guarded = [
+        'id',
     ];
 
-    public function students()
-    {
-        return $this->hasMany(Student::class, 'id_class');
-    }
+    use HasFactory;
 
     public function teacher()
     {
         return $this->belongsTo(Teacher::class, 'id_teacher');
     }
 
+    public function learnings()
+    {
+        return $this->hasMany(Learning::class);
+    }
+
     public function year()
     {
-        return $this->belongsTo(AcademicYear::class, 'id_year');
+        return $this->belongsTo(AcademicYear::class, 'id_academic_year');
+    }
+
+    public function class_member()
+    {
+        return $this->hasMany(ClassMember::class);
     }
 }

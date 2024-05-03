@@ -14,16 +14,11 @@
 
             <div class="card shadow mt-3">
                 <div class="card-body">
-                    <div class="row g-3">
-                        <div class="col-md-10">
-                            <p class="raleway  mb-4 mt-3">
-                                Total seluruh kelas {{ count($data) }}
-                            </p>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="/admin/data-siswa/create" class="btn btn-outline-primary rounded-pill w-100"><i
-                                    class="bi bi-person-add me-2"></i>Tambah</a>
-                        </div>
+                    <div class="text-end mb-3">
+                        <button class="btn btn-outline-primary rounded-pill" data-bs-toggle="modal"
+                            data-bs-target="#modal-tambah">
+                            <i class="bi bi-person-add me-2"></i>Tambah Kelas
+                        </button>
                     </div>
 
 
@@ -34,39 +29,88 @@
                                 <th scope="col" class="text-center">Nama Kelas</th>
                                 <th scope="col" class="text-center">Jumlah Siswa</th>
                                 <th scope="col" class="text-center">Wali Kelas</th>
-                                <th scope="col" class="text-center">Tahun Pelajaran</th>
-                                <th scope="col" class="text-center">Semester</th>
                                 <th scope="col" class="text-center">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
 
-                            @foreach ($data as $index => $class)
+                            @if ($data_class->isEmpty())
                                 <tr>
-                                    <td class="text-center">{{ $index + 1 }}</td>
-                                    <td class="text-center">{{ $class->name }}</td>
-                                    <td class="text-center">{{ $class->students_count }}</td>
-                                    <td>{{ $class->teacher->name }}</td>
-                                    <td class="text-center">{{ $class->year->name }}</td>
-                                    <td class="text-center">{{ $class->year->semester }}</td>
-                                    <td class="text-center">
-                                        <a href="/admin/data-kelas/{{ $class->id }}"
-                                            class="btn-custom-icon color-primary"><i class="bi bi-info-circle"></i></a>
-                                        <a href="/admin/data-kelas/{{ $class->id }}/edit"
-                                            class="btn-custom-icon color-warning"><i class="bi bi-pencil-square"></i></a>
-
-                                        <form action="/admin/data-kelas/{{ $class->id }}" method="POST"
-                                            class="d-inline-block m-0 p-0 border-0">
-                                            @method('delete')
-                                            @csrf
-                                            <button class="btn-custom-icon color-danger p-0 m-0 border-0 bg-transparent"
-                                                onclick="return confirm('Delete Data?')"><i
-                                                    class="bi bi-trash"></i></button>
-                                        </form>
-
-                                    </td>
+                                    <td class="text-center" colspan="5">Belum ada kelas pada tahun pelajaran
+                                        {{ $academic_year->tahun_pelajaran }} semester {{ $academic_year->semester }}</td>
                                 </tr>
-                            @endforeach
+                            @else
+                                @foreach ($data_class as $index => $class)
+                                    <tr>
+                                        <td class="text-center">{{ $index + 1 }}</td>
+                                        <td class="text-center">{{ $class->name }}</td>
+                                        <td class="text-center">{{ $class->total_student }}</td>
+                                        <td>{{ $class->teacher->name }}</td>
+                                        <td class="text-center">
+                                            <a class="btn-custom-icon color-warning" data-bs-toggle="modal"
+                                                data-bs-target="#modal-edit-{{ $class->id }}"><i
+                                                    class="bi bi-pencil-square"></i></a>
+                                            <form action="/admin/data-kelas/{{ $class->id }}" method="POST"
+                                                class="d-inline-block m-0 p-0 border-0">
+                                                @method('delete')
+                                                @csrf
+                                                <button class="btn-custom-icon color-danger p-0 m-0 border-0 bg-transparent"
+                                                    onclick="return confirm('Hapus Kelas {{ $class->name }}?')"><i
+                                                        class="bi bi-trash"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+
+                                    {{-- Start Modal Edit --}}
+                                    <div class="modal fade" id="modal-edit-{{ $class->id }}" data-bs-backdrop="static"
+                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <form method="post" action="/admin/data-kelas/{{ $class->id }}"
+                                                    enctype="multipart/form-data">
+                                                    @method('put')
+                                                    @csrf
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="staticBackdropLabel">Tambah Kelas</h5>
+                                                    </div>
+
+                                                    <div class="modal-body">
+                                                        <div class="mb-3">
+                                                            <label for="name" class="form-label">Nama Kelas</label>
+                                                            <input type="text" class="form-control custom-search"
+                                                                id="name" name="name" value="{{ $class->name }}"
+                                                                placeholder="Masukan nama kelas" required autofocus>
+                                                        </div>
+
+                                                        <div class="mb-3">
+                                                            <label for="id_teacher" class="form-label">Wali Kelas</label>
+                                                            <select name="id_teacher" class="form-select"
+                                                                aria-label="Pilih Wali Kelas" required>
+                                                                <option value="" selected disabled>-- Pilih Wali Kelas
+                                                                    --</option>
+                                                                @foreach ($data_teacher as $item)
+                                                                    <option value="{{ $item->id }}"
+                                                                        @if ($item->id == $class->teacher->id) selected @endif>
+                                                                        {{ $item->name }}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-danger"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- End Modal Edit --}}
+                                @endforeach
+                            @endif
 
                         </tbody>
                     </table>
@@ -75,4 +119,50 @@
             </div>
         </div>
     </div>
+
+    {{-- Start Modal Tambah --}}
+    <div class="modal fade" id="modal-tambah" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="post" action="/admin/data-kelas" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Tambah Kelas</h5>
+                    </div>
+
+                    {{-- Sisipkan id tahun pelajaran --}}
+                    <input type="hidden" class="form-control" name="id_academic_year" value="{{ $academic_year->id }}"
+                        readonly>
+
+
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nama Kelas</label>
+                            <input type="text" class="form-control custom-search" id="name" name="name"
+                                placeholder="Masukan nama kelas" required autofocus>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="id_teacher" class="form-label">Wali Kelas</label>
+                            <select name="id_teacher" class="form-select" aria-label="Pilih Wali Kelas" required>
+                                <option value="" selected disabled>-- Pilih Wali Kelas --</option>
+                                @foreach ($data_teacher as $item)
+                                    <option value="{{ $item->id }}">
+                                        {{ $item->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{-- End Modal Tambah --}}
 @endsection
