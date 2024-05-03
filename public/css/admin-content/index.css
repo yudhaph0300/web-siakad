@@ -78,6 +78,7 @@
 }
 
 .btn-custom-icon {
+   cursor: pointer;
    width: 100%;
    margin: 0 4px;
    text-decoration: none;
