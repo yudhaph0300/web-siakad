@@ -10,11 +10,11 @@ class LessonValue extends Model
     use HasFactory;
     public function learning()
     {
-        return $this->belongsTo(Learning::class);
+        return $this->belongsTo(Learning::class, 'id_learning');
     }
 
     public function class_member()
     {
-        return $this->belongsTo(ClassMember::class);
+        return $this->belongsTo(ClassMember::class, 'id_classmember');
     }
 }

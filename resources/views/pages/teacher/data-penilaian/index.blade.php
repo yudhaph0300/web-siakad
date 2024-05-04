@@ -24,7 +24,7 @@
                                 <th scope="col" class="text-center">Mata Pelajaran</th>
                                 <th scope="col" class="text-center">Kelas</th>
                                 <th scope="col" class="text-center">Jumlah Siswa</th>
-                                <th scope="col" class="text-center">Telah Dinilai</th>
+                                {{-- <th scope="col" class="text-center">Telah Dinilai</th> --}}
                                 <th scope="col" class="text-center">Action</th>
                             </tr>
                         </thead>
@@ -32,33 +32,27 @@
                             @foreach ($data as $index => $item)
                                 <tr>
                                     <td class="text-center" style="vertical-align: middle;">{{ $index + 1 }}</td>
-                                    <td class="text-center" style="vertical-align: middle;">{{ $item['mata_pelajaran'] }}
+                                    <td class="text-center" style="vertical-align: middle;">{{ $item->lesson->name }}
                                     </td>
-                                    <td class="text-center" style="vertical-align: middle;">{{ $item['kelas'] }}</td>
-                                    <td class="text-center" style="vertical-align: middle;">{{ $item['jumlah_siswa'] }}
+                                    <td class="text-center" style="vertical-align: middle;">{{ $item->classname->name }}
+                                    </td>
+                                    <td class="text-center" style="vertical-align: middle;">
+                                        {{ $item->jumlah_anggota_kelas }}
                                         Siswa</td>
-                                    <td class="text-center" style="vertical-align: middle;">{{ $item['telah_dinilai'] }}
-                                        Siswa</td>
-                                    <td class="text-center" style="vertical-align: middle;"><button
-                                            class="btn btn-primary">Input Nilai</button></td>
+                                    {{-- <td class="text-center" style="vertical-align: middle;">
+                                        {{ $item->jumlah_telah_dinilai }}
+                                        Siswa</td> --}}
+                                    <td class="text-center" style="vertical-align: middle;">
+                                        <form action="/teacher/data-penilaian/create" method="GET">
+                                            @csrf
+                                            <input type="hidden" name="id_learning" value="{{ $item->id }}">
+                                            <button type="submit" class="btn btn-primary rounded-pill">Input Nilai</button>
+                                        </form>
+                                    </td>
+                                    </td>
                                 </tr>
                             @endforeach
 
-
-                            {{-- @if ($data_mapel->isEmpty())
-                                <tr>
-                                    <td class="text-center" colspan="5">Belum ada mata pelajaran pada tahun pelajaran
-                                        {{ $academic_year->tahun_pelajaran }} semester {{ $academic_year->semester }}</td>
-                                </tr>
-                            @else
-                                @foreach ($data_mapel as $index => $mapel)
-                                    <tr>
-                                        <td class="text-center">{{ $index + 1 }}</td>
-                                        <td class="text-center">{{ $mapel->name }}</td>
-
-                                    </tr>
-                                @endforeach
-                            @endif --}}
 
                         </tbody>
                     </table>

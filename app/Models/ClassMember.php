@@ -14,16 +14,16 @@ class ClassMember extends Model
 
     public function student()
     {
-        return $this->belongsTo(Student::class);
+        return $this->belongsTo(Student::class, 'id_student');
     }
 
     public function classname()
     {
-        return $this->belongsTo(ClassName::class);
+        return $this->belongsTo(ClassName::class, 'id_class');
     }
 
     public function lesson_value()
     {
-        return $this->hasMany(LessonValue::class);
+        return $this->hasMany(LessonValue::class, 'id_classmember');
     }
 }
