@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\AcademicYear;
 use App\Http\Requests\StoreAcademicYearRequest;
 use App\Http\Requests\UpdateAcademicYearRequest;
+use App\Models\Learning;
+use App\Models\Lesson;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -38,6 +40,24 @@ class AcademicYearController extends Controller
 
         // Setting agar siswa tidak memiliki kelas
         Student::query()->update(['id_class' => null]);
+
+
+
+        // Duplikat mata pelajaran
+        // Dapatkan id_academic_year dari AcademicYear yang baru saja dibuat
+        $newAcademicYearId = $tapel->id;
+
+        // Dapatkan semua record dari tabel learning
+        $lessons = Lesson::all();
+
+        // Loop melalui setiap record learning dan duplikat dengan id_academic_year baru
+        foreach ($lessons as $lesson) {
+            Lesson::create([
+                'name' => $lesson->name,
+                'id_academic_year' => $newAcademicYearId,
+            ]);
+        }
+
 
         return redirect('/admin/data-tahun-pelajaran');
     }
