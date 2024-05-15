@@ -18,19 +18,25 @@
                             <div class="">
                                 <select id="kelas" name="kelas" class="form-select custom-select"
                                     aria-label="Default select example">
-                                    <option value="" selected>Semua Kelas</option>
-                                    <option value="">Opsi</option>
-                                    <option value="">Opsi</option>
-                                    <option value="">Opsi</option>
-
+                                    <option value="" {{ session('filter_kelas') == '' ? 'selected' : '' }}>Semua Kelas
+                                    </option>
+                                    <option value="__NULL__" {{ session('filter_kelas') === '__NULL__' ? 'selected' : '' }}>
+                                        Tidak Memiliki Kelas</option>
+                                    @foreach ($data_class as $class)
+                                        <option value="{{ $class->id }}"
+                                            {{ session('filter_kelas') == $class->id ? 'selected' : '' }}>
+                                            {{ $class->name }}</option>
+                                    @endforeach
                                 </select>
+
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="">
-                                <input type="text" value="" class="form-control custom-search" id="search"
-                                    name="search" placeholder="Masukan keyword">
+                                <input type="text" value="{{ session('filter_search') }}"
+                                    class="form-control custom-search" id="search" name="search"
+                                    placeholder="Masukan keyword">
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -39,8 +45,9 @@
                                         class="bi bi-filter me-2"></i>Filter</button>
                             </div>
                         </div>
-
                     </form>
+
+
                 </div>
             </div>
 
@@ -49,7 +56,7 @@
                     <div class="row g-3">
                         <div class="col-md-8">
                             <p class="raleway  mb-4 mt-3">
-                                Jumlah seluruh siswa adalah {{ $data_student_length }}
+                                Jumlah data siswa yang ditemukan adalah {{ $data_student_length }}
                             </p>
                         </div>
                         <div class="col-md-2">
@@ -77,7 +84,7 @@
                         <tbody>
                             @if ($data_student_length === 0)
                                 <tr class="text-center">
-                                    <td colspan="5">Data not found</td>
+                                    <td colspan="6">Data not found</td>
                                 </tr>
                             @endif
                             @foreach ($data_student as $index => $student)

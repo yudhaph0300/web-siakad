@@ -32,12 +32,7 @@
                                     <input type="text" value="{{ $student->name }}" class="form-control custom-search"
                                         id="name" name="name" placeholder="Masukan nama siswa">
                                 </div>
-                                <div class="mb-3">
-                                    <label for="username" class="form-label">Username</label>
-                                    <input type="text" value="{{ $student->username }}"
-                                        class="form-control custom-search" id="username" name="username"
-                                        placeholder="Masukan username siswa">
-                                </div>
+
 
 
 
@@ -45,13 +40,17 @@
                                     <label for="id_class" class="form-label">Kelas</label>
                                     <select id="id_class" name="id_class" class="form-select custom-select"
                                         aria-label="Default select example">
+                                        <option value="" {{ !$student->classname ? 'selected' : '' }}>Pilih Kelas
+                                        </option>
                                         @foreach ($classnames as $class)
                                             <option value="{{ $class->id }}"
-                                                {{ $class->id == $student->classname->id ? 'selected' : '' }}>
-                                                Kelas {{ $class->name }}</option>
+                                                {{ $student->classname && $class->id == $student->classname->id ? 'selected' : '' }}>
+                                                Kelas {{ $class->name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
+
 
 
                                 <div class="mb-3">
