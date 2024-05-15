@@ -45,9 +45,9 @@
                                     <tr>
                                         <td class="text-center" style="vertical-align: middle;">{{ $loop->iteration }}</td>
                                         <td class="text-center" style="vertical-align: middle;">
-                                            {{ $item->class_member->student->name }}</td>
+                                            {{ $item->student->name }}</td>
 
-                                        <input type="hidden" name="anggota_kelas_id[]" value="{{ $item->id_classmember }}">
+                                        <input type="hidden" name="anggota_kelas_id[]" value="{{ $item->id_student }}">
                                         <td>
                                             <input type="number" class="form-control" name="ko1[]"
                                                 value="{{ $item->ko1 }}" min="0" max="100" step="0.01"

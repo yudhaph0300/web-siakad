@@ -9,6 +9,7 @@ use App\Models\AcademicYear;
 use App\Models\ClassMember;
 use App\Models\ClassName;
 use App\Models\Learning;
+use App\Models\Student;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,7 +30,7 @@ class LessonValueController extends Controller
         $data = Learning::where('id_teacher', $teacher->id)->whereIn('id_class', $id_class)->orderBy('id_lesson', 'ASC')->get();
 
         foreach ($data as $penilaian) {
-            $data_anggota_kelas = ClassMember::where('id_class', $penilaian->id_class)->get();
+            $data_anggota_kelas = Student::where('id_class', $penilaian->id_class)->get();
             $data_nilai = LessonValue::where('id_learning', $penilaian->id)->get();
 
             $penilaian->jumlah_anggota_kelas = count($data_anggota_kelas);
@@ -48,9 +49,11 @@ class LessonValueController extends Controller
 
         $learning = Learning::findOrFail($request->id_learning);
 
-        $data_anggota_kelas = ClassMember::where('id_class', $learning->id_class)->get();
+        $data_anggota_kelas = Student::where('id_class', $learning->id_class)->get();
+        // dd($data_anggota_kelas);
 
         $data_nilai = LessonValue::where('id_learning', $learning->id)->get();
+        // dd($data_nilai);
 
         if (count($data_nilai) == 0) {
             return view('pages.teacher.data-penilaian.create', compact('title', 'learning', 'data_anggota_kelas'));
@@ -64,11 +67,14 @@ class LessonValueController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         for ($count_student = 0; $count_student < count($request->anggota_kelas_id); $count_student++) {
             if ($request->ko1[$count_student] >= 0 && $request->ko1[$count_student] <= 100 || $request->ko2[$count_student] >= 0 && $request->ko2[$count_student] <= 100 || $request->sub1[$count_student] >= 0 && $request->sub1[$count_student] <= 100 || $request->sub2[$count_student] >= 0 && $request->sub2[$count_student] <= 100 || $request->uts_uas[$count_student] >= 0 && $request->uts_uas[$count_student] <= 100) {
                 $data_nilai = array(
+
                     'id_learning'  => $request->id_learning,
-                    'id_classmember'  => $request->anggota_kelas_id[$count_student],
+                    // 'id_classmember'  => $request->anggota_kelas_id[$count_student],
+                    'id_student'  => $request->anggota_kelas_id[$count_student],
                     'ko1'  => ltrim($request->ko1[$count_student]),
                     'ko2'  => ltrim($request->ko2[$count_student]),
                     'sub1'  => ltrim($request->sub1[$count_student]),
@@ -107,10 +113,11 @@ class LessonValueController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request);
         for ($count_student = 0; $count_student < count($request->anggota_kelas_id); $count_student++) {
 
             if ($request->ko1[$count_student] >= 0 && $request->ko1[$count_student] <= 100 || $request->ko2[$count_student] >= 0 && $request->ko2[$count_student] <= 100 || $request->sub1[$count_student] >= 0 && $request->sub1[$count_student] <= 100 || $request->sub2[$count_student] >= 0 && $request->sub2[$count_student] <= 100 || $request->uts_uas[$count_student] >= 0 && $request->uts_uas[$count_student] <= 100) {
-                $nilai = LessonValue::where('id_learning', $id)->where('id_classmember', $request->anggota_kelas_id[$count_student])->first();
+                $nilai = LessonValue::where('id_learning', $id)->where('id_student', $request->anggota_kelas_id[$count_student])->first();
 
                 $data_nilai = [
                     'ko1'  => ltrim($request->ko1[$count_student]),

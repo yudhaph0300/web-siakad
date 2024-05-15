@@ -43,7 +43,7 @@
                                 @foreach ($data_anggota_kelas as $item)
                                     <tr>
                                         <td class="text-center" style="vertical-align: middle;">{{ $loop->iteration }}</td>
-                                        <td class="text-left" style="vertical-align: middle;">{{ $item->student->name }}
+                                        <td class="text-left" style="vertical-align: middle;">{{ $item->name }}
                                         </td>
                                         <input type="hidden" name="anggota_kelas_id[]" value="{{ $item->id }}">
                                         <td class="text-center" style="vertical-align: middle;">

@@ -17,4 +17,8 @@ class LessonValue extends Model
     {
         return $this->belongsTo(ClassMember::class, 'id_classmember');
     }
+    public function student()
+    {
+        return $this->belongsTo(Student::class, 'id_student');
+    }
 }
