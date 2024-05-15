@@ -8,6 +8,7 @@ use App\Http\Controllers\ClassController;
 use App\Http\Controllers\LearningController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\LessonValueController;
+use App\Http\Controllers\RaportController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Models\LessonValue;
@@ -49,6 +50,7 @@ Route::prefix('admin')->group(function () {
         Route::resource('/data-mata-pelajaran', LessonController::class);
         Route::resource('/data-pembelajaran', LearningController::class);
         Route::resource('/data-tahun-pelajaran', AcademicYearController::class);
+        Route::resource('/cetak-raport', RaportController::class);
     });
 });
 
@@ -56,7 +58,7 @@ Route::prefix('admin')->group(function () {
 Route::prefix('student')->group(function () {
     Route::middleware(['auth:student'])->group(function () {
         Route::get('/dashboard', function () {
-            return view('pages.student.index');
+            return view('pages.student.index', ["title" => 'dashboard']);
         })->name('student-dashboard');
     });
 });
