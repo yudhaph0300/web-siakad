@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Learning;
 use App\Http\Requests\StoreLearningRequest;
 use App\Http\Requests\UpdateLearningRequest;
+use App\Models\AcademicYear;
+use App\Models\ClassName;
+use App\Models\Lesson;
+use App\Models\Teacher;
+use Illuminate\Http\Request;
 
 class LearningController extends Controller
 {
@@ -14,9 +19,13 @@ class LearningController extends Controller
     public function index()
     {
         $title = 'data pembelajaran';
-        $learnings = Learning::all();
+        $learnings = Learning::where('id_academic_year', session()->get('id_academic_year'))->get();
 
-        return view('pages.admin.data-pembelajaran.index', compact('title', 'learnings'));
+        $lessons = Lesson::where('id_academic_year', session()->get('id_academic_year'))->get();
+        $classnames = ClassName::where('id_academic_year', session()->get('id_academic_year'))->get();
+        $teachers = Teacher::all();
+
+        return view('pages.admin.data-pembelajaran.index', compact('title', 'learnings', 'lessons', 'classnames', 'teachers'));
     }
 
     /**
@@ -30,9 +39,25 @@ class LearningController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreLearningRequest $request)
+    public function store(Request $request)
     {
-        //
+        // $validatedData = $request->validate([
+        //     'id_lesson' => 'required',
+        //     'id_class' => 'required',
+        //     'id_teacher' => 'required'
+        // ]);
+
+        $learning = new Learning([
+            'id_academic_year' => session()->get('id_academic_year'),
+            'id_lesson' => $request->id_lesson,
+            'id_class' => $request->id_class,
+            'id_teacher' => $request->id_teacher
+        ]);
+
+        $learning->save();
+
+
+        return redirect('/admin/data-pembelajaran');
     }
 
     /**
