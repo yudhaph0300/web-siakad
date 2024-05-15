@@ -50,6 +50,12 @@
                     <span>Data Tahun Pelajaran</span>
                 </a>
             </li>
+            <li class="sidebar-list-item {{ $title === 'cetak raport' ? 'active' : '' }}">
+                <a href="/admin/cetak-raport">
+                    <i class="bi bi-collection"></i>
+                    <span>Cetak Raport</span>
+                </a>
+            </li>
         @endif
 
         @if (Auth::check() && Auth::user()->role == 'teacher')
