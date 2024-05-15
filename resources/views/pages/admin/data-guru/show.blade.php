@@ -29,8 +29,21 @@
                                         <td>{{ $teacher->name }}</td>
                                     </tr>
                                     <tr>
-                                        <td>username</td>
+                                        <td>Username</td>
                                         <td>{{ $teacher->username }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jenis Kelamin</td>
+                                        @if ($teacher->gender === 1)
+                                            <td>Laki-laki</td>
+                                        @endif
+                                        @if ($teacher->gender === 2)
+                                            <td>Perempuan</td>
+                                        @endif
+                                    </tr>
+                                    <tr>
+                                        <td>Alamat</td>
+                                        <td>{{ $teacher->address }}</td>
                                     </tr>
 
                                 </tbody>

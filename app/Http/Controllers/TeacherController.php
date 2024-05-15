@@ -12,28 +12,22 @@ class TeacherController extends Controller
      */
     public function index(Request $request)
     {
-        $search = $request->search;
-        $sort = $request->sort ?: 'desc';
         $title = 'data guru';
+
+        session()->put('filter_search', $request->search);
         $query = Teacher::query();
 
         // Filter berdasarkan pencarian
-        if ($search) {
-            $query->where('name', 'LIKE', '%' . $search . '%')
-                ->orWhere('nik', 'LIKE', '%' . $search . '%')
-                ->orWhere('username', 'LIKE', '%' . $search . '%');
+        if (session()->has('filter_search')) {
+            $query->where('name', 'like', '%' . session('filter_search') . '%');
         }
 
-        // Pengurutan berdasarkan created_at
-        if ($sort && in_array($sort, ['asc', 'desc'])) {
-            $query->orderBy('created_at', $sort);
-        }
-
-        $dataLength = $query->count();
+        $data = $query->get();
+        $dataLength = $data->count();
 
         $data = $query->paginate(10)->appends(request()->query());
 
-        return view('pages.admin.data-guru.index', compact('title', 'data', 'search', 'sort', 'dataLength'));
+        return view('pages.admin.data-guru.index', compact('title', 'data', 'dataLength'));
     }
 
     /**
@@ -53,11 +47,13 @@ class TeacherController extends Controller
         $validatedData = $request->validate([
             'nik' => 'required|max:10',
             'name' => 'required|max:55',
-            'username' => 'required|max:25',
+            'gender' => 'required|max:1',
+            'address' => 'max:255',
         ]);
 
         $validatedData['image'] = 'https://images.pexels.com/photos/19384491/pexels-photo-19384491/free-photo-of-a-woman-holding-a-camera.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load';
         $validatedData['role'] = 'teacher';
+        $validatedData['username'] = $request->nik;
         $validatedData['password'] = bcrypt('teacher');
 
         Teacher::create($validatedData);
@@ -95,11 +91,13 @@ class TeacherController extends Controller
         $rules = [
             'nik' => 'required|max:10',
             'name' => 'required|max:55',
-            'username' => 'required|max:25',
+            'gender' => 'required|max:1',
+            'address' => 'max:255',
         ];
 
 
         $validatedData = $request->validate($rules);
+        $validatedData['username'] = $request->nik;
 
         Teacher::where('id', $teacher->id)
             ->update($validatedData);

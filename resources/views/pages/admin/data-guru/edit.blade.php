@@ -33,10 +33,16 @@
                                         id="name" name="name" placeholder="Masukan nama guru">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="username" class="form-label">Username</label>
-                                    <input type="text" value="{{ $teacher->username }}"
-                                        class="form-control custom-search" id="username" name="username"
-                                        placeholder="Masukan username guru">
+                                    <label for="gender" class="form-label">Jenis Kelamin</label>
+                                    <select name="gender" id="gender" class="form-select custom-search">
+                                        <option value="1">Laki-laki</option>
+                                        <option value="2">Perempuan</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">Alamat</label>
+                                    <input type="text" class="form-control custom-search" id="address" name="address"
+                                        placeholder="Masukan alamat guru" value="{{ $teacher->address }}">
                                 </div>
                                 <div class="mb-3">
                                     <div class="row g-2">
