@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('lesson_values', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_learning');
-            $table->unsignedBigInteger('id_classmember')->unsigned();
+            $table->unsignedBigInteger('id_student')->unsigned();
             $table->decimal('ko1')->default(0);
             $table->decimal('ko2')->default(0);
             $table->decimal('sub1')->default(0);

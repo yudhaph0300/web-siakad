@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('learnings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_class');
-            $table->foreignId('id_lesson');
+            $table->foreignId('id_class')->nullable();
+            $table->foreignId('id_lesson')->nullable();
             $table->foreignId('id_teacher')->nullable();
+            $table->foreignId('id_academic_year')->nullable();
             $table->timestamps();
         });
     }

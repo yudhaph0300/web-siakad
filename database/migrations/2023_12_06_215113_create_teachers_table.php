@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nik');
             $table->string('name');
+            $table->integer('gender');
+            $table->string('address')->nullable();
             $table->string('username');
             $table->string('password');
             $table->string('role');
