@@ -51,7 +51,7 @@ class DatabaseSeeder extends Seeder
             'address' => 'Klampisan, Tondowulan, Plandaan, Jombang',
             'image' => 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             'role' => 'student',
-            'id_class' => 2
+            'id_class' => 1
         ]);
         \App\Models\Student::factory()->create([
             'username' => 'solikin',
@@ -65,6 +65,66 @@ class DatabaseSeeder extends Seeder
             'role' => 'student',
             'id_class' => 2
         ]);
+        \App\Models\Student::factory()->create([
+            'username' => 'fadwa',
+            'password' => bcrypt('password'),
+            'nis' => '141614',
+            'name' => 'Fadwa Nazirah',
+            'gender' => 2,
+            'birthday' => '2015-03-31',
+            'address' => 'Malang',
+            'image' => 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            'role' => 'student',
+            'id_class' => 2
+        ]);
+        \App\Models\Student::factory()->create([
+            'username' => 'maria',
+            'password' => bcrypt('password'),
+            'nis' => '110614',
+            'name' => 'Maria Astrid',
+            'gender' => 2,
+            'birthday' => '2015-03-31',
+            'address' => 'Malang',
+            'image' => 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            'role' => 'student',
+            'id_class' => 2
+        ]);
+        \App\Models\Student::factory()->create([
+            'username' => 'hedara',
+            'password' => bcrypt('password'),
+            'nis' => '140814',
+            'name' => 'Hedara Putri',
+            'gender' => 2,
+            'birthday' => '2015-03-31',
+            'address' => 'Malang',
+            'image' => 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            'role' => 'student',
+            'id_class' => 3
+        ]);
+        \App\Models\Student::factory()->create([
+            'username' => 'bela',
+            'password' => bcrypt('password'),
+            'nis' => '140104',
+            'name' => 'Nabela Zakaria',
+            'gender' => 2,
+            'birthday' => '2015-03-31',
+            'address' => 'Malang',
+            'image' => 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            'role' => 'student',
+            'id_class' => 3
+        ]);
+        \App\Models\Student::factory()->create([
+            'username' => 'abdillah',
+            'password' => bcrypt('password'),
+            'nis' => '153104',
+            'name' => 'Muhammad Abdilllah',
+            'gender' => 1,
+            'birthday' => '2015-03-31',
+            'address' => 'Malang',
+            'image' => 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            'role' => 'student',
+            'id_class' => 3
+        ]);
 
 
         \App\Models\Admin::factory()->create([
@@ -75,22 +135,41 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\Teacher::factory()->create([
+            'nik' => '11111',
             'name' => 'Samuji',
-            'username' => 'samuji',
+            'gender' => 1,
+            'address' => 'Klampisan Tondowulan Plandaan Jombang',
+            'username' => '11111',
             'password' => bcrypt('password'),
             'role' => 'teacher',
             'image' => 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
         ]);
         \App\Models\Teacher::factory()->create([
+            'nik' => '22222',
             'name' => 'Sriyono',
-            'username' => 'sriyono',
+            'gender' => 1,
+            'address' => 'Klampisan Tondowulan Plandaan Jombang',
+            'username' => '22222',
             'password' => bcrypt('password'),
             'role' => 'teacher',
             'image' => 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
         ]);
         \App\Models\Teacher::factory()->create([
+            'nik' => '33333',
             'name' => 'Ratna',
-            'username' => 'ratna',
+            'gender' => 2,
+            'address' => 'Klampisan Tondowulan Plandaan Jombang',
+            'username' => '33333',
+            'password' => bcrypt('password'),
+            'role' => 'teacher',
+            'image' => 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+        ]);
+        \App\Models\Teacher::factory()->create([
+            'nik' => '44444',
+            'name' => 'Hermanto',
+            'gender' => 1,
+            'address' => 'Klampisan Tondowulan Plandaan Jombang',
+            'username' => '44444',
             'password' => bcrypt('password'),
             'role' => 'teacher',
             'image' => 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
@@ -107,6 +186,11 @@ class DatabaseSeeder extends Seeder
             'name' => '8A',
             'id_academic_year' => '1',
             'id_teacher' => '2'
+        ]);
+        \App\Models\ClassName::factory()->create([
+            'name' => '9A',
+            'id_academic_year' => '1',
+            'id_teacher' => '3'
         ]);
 
 
@@ -133,42 +217,74 @@ class DatabaseSeeder extends Seeder
         Learning::create([
             'id_class' => '1',
             'id_lesson' => '1',
-            'id_teacher' => '1'
+            'id_teacher' => '1',
+            'id_academic_year' => '1'
         ]);
         Learning::create([
             'id_class' => '1',
             'id_lesson' => '2',
-            'id_teacher' => '2'
+            'id_teacher' => '2',
+            'id_academic_year' => '1'
         ]);
         Learning::create([
             'id_class' => '1',
             'id_lesson' => '3',
-            'id_teacher' => '3'
+            'id_teacher' => '3',
+            'id_academic_year' => '1'
         ]);
         Learning::create([
             'id_class' => '1',
             'id_lesson' => '4',
-            'id_teacher' => '1'
+            'id_teacher' => '4',
+            'id_academic_year' => '1'
         ]);
         Learning::create([
             'id_class' => '2',
             'id_lesson' => '1',
-            'id_teacher' => '1'
+            'id_teacher' => '1',
+            'id_academic_year' => '1'
         ]);
         Learning::create([
             'id_class' => '2',
             'id_lesson' => '2',
-            'id_teacher' => '2'
+            'id_teacher' => '2',
+            'id_academic_year' => '1'
         ]);
         Learning::create([
             'id_class' => '2',
             'id_lesson' => '3',
-            'id_teacher' => '3'
+            'id_teacher' => '3',
+            'id_academic_year' => '1'
         ]);
         Learning::create([
             'id_class' => '2',
             'id_lesson' => '4',
-            'id_teacher' => '1'
+            'id_teacher' => '4',
+            'id_academic_year' => '1'
+        ]);
+        Learning::create([
+            'id_class' => '3',
+            'id_lesson' => '1',
+            'id_teacher' => '1',
+            'id_academic_year' => '1'
+        ]);
+        Learning::create([
+            'id_class' => '3',
+            'id_lesson' => '2',
+            'id_teacher' => '2',
+            'id_academic_year' => '1'
+        ]);
+        Learning::create([
+            'id_class' => '3',
+            'id_lesson' => '3',
+            'id_teacher' => '3',
+            'id_academic_year' => '1'
+        ]);
+        Learning::create([
+            'id_class' => '3',
+            'id_lesson' => '4',
+            'id_teacher' => '4',
+            'id_academic_year' => '1'
         ]);
 
 
@@ -178,21 +294,37 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        ClassMember::create([
-            'id_student' => '1',
-            'id_class' => '1',
-        ]);
-        ClassMember::create([
-            'id_student' => '2',
-            'id_class' => '1',
-        ]);
-        ClassMember::create([
-            'id_student' => '3',
-            'id_class' => '2',
-        ]);
-        ClassMember::create([
-            'id_student' => '4',
-            'id_class' => '2',
-        ]);
+        // ClassMember::create([
+        //     'id_student' => '1',
+        //     'id_class' => '1',
+        // ]);
+        // ClassMember::create([
+        //     'id_student' => '2',
+        //     'id_class' => '1',
+        // ]);
+        // ClassMember::create([
+        //     'id_student' => '3',
+        //     'id_class' => '2',
+        // ]);
+        // ClassMember::create([
+        //     'id_student' => '4',
+        //     'id_class' => '2',
+        // ]);
+        // ClassMember::create([
+        //     'id_student' => '5',
+        //     'id_class' => '1',
+        // ]);
+        // ClassMember::create([
+        //     'id_student' => '6',
+        //     'id_class' => '1',
+        // ]);
+        // ClassMember::create([
+        //     'id_student' => '7',
+        //     'id_class' => '2',
+        // ]);
+        // ClassMember::create([
+        //     'id_student' => '8',
+        //     'id_class' => '2',
+        // ]);
     }
 }

@@ -45,7 +45,8 @@
                                         <td class="text-center">{{ $index + 1 }}</td>
                                         <td class="text-center">{{ $class->name }}</td>
                                         <td class="text-center">{{ $class->total_student }}</td>
-                                        <td>{{ $class->teacher->name }}</td>
+                                        <td>{{ $class->teacher ? $class->teacher->name : 'Wali kelas belum ditambahkan' }}
+                                        </td>
                                         <td class="text-center">
                                             <a class="btn-custom-icon color-warning" data-bs-toggle="modal"
                                                 data-bs-target="#modal-edit-{{ $class->id }}"><i
