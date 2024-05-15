@@ -1,4 +1,4 @@
-@extends('layouts.dashboard.index')
+@extends('layouts.student.index')
 
 @section('main-content')
     <div class="app-content">
@@ -10,7 +10,7 @@
         </div>
 
         <div class="content-body">
-            <div class="row">
+            <div class="row g-3">
                 <div class="col-md-4">
                     <div class="card card-dashboard ">
                         <p class="card-title raleway heading-5 fw-bold">Content</p>
