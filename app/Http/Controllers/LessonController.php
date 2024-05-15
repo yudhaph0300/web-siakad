@@ -6,6 +6,7 @@ use App\Models\Lesson;
 use App\Http\Requests\StoreLessonRequest;
 use App\Http\Requests\UpdateLessonRequest;
 use App\Models\AcademicYear;
+use App\Models\Learning;
 use Illuminate\Http\Request;
 
 class LessonController extends Controller
@@ -17,7 +18,7 @@ class LessonController extends Controller
     {
         $title = 'data mata pelajaran';
         $academic_year = AcademicYear::findorfail(session()->get('id_academic_year'));
-        $lessons = Lesson::where('id_academic_year', $academic_year->id)->orderBy('name', 'ASC')->get();
+        $lessons = Lesson::where('id_academic_year', $academic_year->id)->get();
         return view('pages.admin.data-mapel.index', compact('title', 'academic_year', 'lessons'));
     }
 
@@ -44,6 +45,7 @@ class LessonController extends Controller
         ]);
 
         $lesson->save();
+
 
         return redirect('/admin/data-mata-pelajaran');
     }
