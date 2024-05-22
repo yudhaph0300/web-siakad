@@ -28,24 +28,9 @@ class LearningController extends Controller
         return view('pages.admin.data-pembelajaran.index', compact('title', 'learnings', 'lessons', 'classnames', 'teachers'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        // $validatedData = $request->validate([
-        //     'id_lesson' => 'required',
-        //     'id_class' => 'required',
-        //     'id_teacher' => 'required'
-        // ]);
 
         $learning = new Learning([
             'id_academic_year' => session()->get('id_academic_year'),

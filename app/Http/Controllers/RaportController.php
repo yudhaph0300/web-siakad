@@ -70,19 +70,42 @@ class RaportController extends Controller
         $title = 'cetak raport';
         $student = Student::findOrFail($studentId);
         $academic_year = AcademicYear::findOrFail(session()->get('id_academic_year'));
-        $raport = LessonValue::select('lessons.name as lesson_name', 'lesson_values.ko1', 'lesson_values.ko2', 'lesson_values.sub1', 'lesson_values.sub2', 'lesson_values.praktik', 'lesson_values.uts_uas')
+        $raport = LessonValue::select(
+            'lessons.name as lesson_name',
+            'class_names.name as class_name',
+            'lesson_values.ko1',
+            'lesson_values.ko2',
+            'lesson_values.sub1',
+            'lesson_values.sub2',
+            'lesson_values.praktik',
+            'lesson_values.uts_uas'
+        )
             ->join('learnings', 'lesson_values.id_learning', '=', 'learnings.id')
             ->join('lessons', 'learnings.id_lesson', '=', 'lessons.id')
+            ->join('class_names', 'learnings.id_class', '=', 'class_names.id')
             ->where('lesson_values.id_student', $studentId)
             ->where('learnings.id_academic_year', session()->get('id_academic_year'))
             ->get();
+        // dd($raport);
 
         return view('pages.admin.raport.show', compact('title', 'raport', 'student', 'academic_year'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
+    public function print($id)
+    {
+        $title = 'cetak raport';
+        $student = Student::findOrFail($id);
+        $academic_year = AcademicYear::findOrFail(session()->get('id_academic_year'));
+        $raport = LessonValue::select('lessons.name as lesson_name', 'lesson_values.ko1', 'lesson_values.ko2', 'lesson_values.sub1', 'lesson_values.sub2', 'lesson_values.praktik', 'lesson_values.uts_uas')
+            ->join('learnings', 'lesson_values.id_learning', '=', 'learnings.id')
+            ->join('lessons', 'learnings.id_lesson', '=', 'lessons.id')
+            ->where('lesson_values.id_student', $id)
+            ->where('learnings.id_academic_year', session()->get('id_academic_year'))
+            ->get();
+
+        return view('pages.admin.raport.print', compact('title', 'raport', 'student', 'academic_year'));
+    }
     public function edit(string $id)
     {
         //

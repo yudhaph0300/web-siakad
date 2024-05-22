@@ -3,9 +3,9 @@
 @section('main-content')
     <div class="app-content">
         <div class="app-content-header shadow-sm">
-            <h1 class="app-content-headerText raleway fw-bold">Data Tahun Pelajaran</h1>
-            <button class="btn btn-primary">
-                Action
+            <h1 class="app-content-headerText raleway fw-bold">Cetak Rapor</h1>
+            <button class="btn-hamburger">
+                <i class="bi bi-grid-3x3-gap"></i>
             </button>
         </div>
 
@@ -80,9 +80,9 @@
                                         <a href="/admin/cetak-raport/{{ $item->id }}" class="btn btn-primary">
                                             Lihat
                                         </a>
-                                        <button class="btn btn-primary">
-                                            Cetak
-                                        </button>
+                                        <a href="/admin/print-raport/{{ $item->id }}" target="_blank"
+                                            class="btn btn-primary">Cetak
+                                            Rapor</a>
                                     </td>
                                 </tr>
                             @endforeach

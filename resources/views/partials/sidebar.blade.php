@@ -67,6 +67,15 @@
             </li>
         @endif
 
+        @if (Auth::check() && Auth::user()->role == 'student')
+            <li class="sidebar-list-item {{ $title === 'raport' ? 'active' : '' }}">
+                <a href="/student/raport">
+                    <i class="bi bi-collection"></i>
+                    <span>Raport</span>
+                </a>
+            </li>
+        @endif
+
 
     </ul>
     <div class="account-info">

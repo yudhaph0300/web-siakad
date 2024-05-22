@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_learning');
             $table->unsignedBigInteger('id_student')->unsigned();
-            $table->decimal('ko1')->default(0);
-            $table->decimal('ko2')->default(0);
-            $table->decimal('sub1')->default(0);
-            $table->decimal('sub2')->default(0);
-            $table->decimal('praktik')->default(0);
-            $table->decimal('uts_uas')->default(0);
+            $table->float('ko1')->nullable();
+            $table->float('ko2')->nullable();
+            $table->float('sub1')->nullable();
+            $table->float('sub2')->nullable();
+            $table->float('praktik')->nullable();
+            $table->float('uts_uas')->nullable();
             $table->timestamps();
         });
     }

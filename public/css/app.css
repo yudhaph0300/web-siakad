@@ -145,6 +145,13 @@ body {
    border-color: #e04b4b;
 }
 
+.btn-hamburger {
+   background-color: transparent;
+   color: #12121E;
+   border: none;
+   font-size: 20px;
+}
+
 
 
 /* Line */

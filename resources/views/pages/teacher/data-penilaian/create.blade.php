@@ -11,7 +11,6 @@
 
         <div class="content-body">
 
-
             <div class="card shadow mt-3">
                 <div class="card-body">
 
@@ -80,11 +79,19 @@
                         </table>
 
                         <div class="line my-4"></div>
-
-                        <div>
-                            <a href="/teacher/data-penilaian" class="btn btn-outline-primary me-2">Batal</a>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <a href="/teacher/export-nilai/{{ $learning->id }}" class="btn btn-primary">Download
+                                    Template
+                                    Import</a>
+                                <a href="/teacher/import-nilai/{{ $learning->id }}" class="btn btn-primary">Import Nilai</a>
+                            </div>
+                            <div>
+                                <a href="/teacher/data-penilaian" class="btn btn-outline-primary me-2">Batal</a>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                            </div>
                         </div>
+
                     </form>
                 </div>
             </div>

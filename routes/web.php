@@ -5,11 +5,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\ImportController;
 use App\Http\Controllers\LearningController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\LessonValueController;
+use App\Http\Controllers\LessonValueExportController;
 use App\Http\Controllers\RaportController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\StudentRaportController;
 use App\Http\Controllers\TeacherController;
 use App\Models\LessonValue;
 
@@ -51,6 +54,7 @@ Route::prefix('admin')->group(function () {
         Route::resource('/data-pembelajaran', LearningController::class);
         Route::resource('/data-tahun-pelajaran', AcademicYearController::class);
         Route::resource('/cetak-raport', RaportController::class);
+        Route::get('/print-raport/{id}', [RaportController::class, 'print']);
     });
 });
 
@@ -60,6 +64,7 @@ Route::prefix('student')->group(function () {
         Route::get('/dashboard', function () {
             return view('pages.student.index', ["title" => 'dashboard']);
         })->name('student-dashboard');
+        Route::resource('/raport', StudentRaportController::class);
     });
 });
 
@@ -70,5 +75,8 @@ Route::prefix('teacher')->group(function () {
             return view('pages.teacher.index', ["title" => 'dashboard']);
         })->name('teacher-dashboard');
         Route::resource('/data-penilaian', LessonValueController::class);
+        Route::get('/import-nilai/{id_learning}', [ImportController::class, 'index']);
+        Route::post('/import-nilai/proses', [ImportController::class, 'import'])->name('import-lesson-value');
+        Route::get('/export-nilai/{id_learning}', [LessonValueExportController::class, 'export'])->name('export-lesson-value');
     });
 });

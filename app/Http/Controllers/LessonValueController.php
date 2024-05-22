@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\LessonValue;
 use App\Http\Requests\StoreLessonValueRequest;
 use App\Http\Requests\UpdateLessonValueRequest;
+use App\Imports\LessonValueImport;
 use App\Models\AcademicYear;
 use App\Models\ClassMember;
 use App\Models\ClassName;
@@ -13,6 +14,8 @@ use App\Models\Student;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class LessonValueController extends Controller
 {
@@ -36,6 +39,7 @@ class LessonValueController extends Controller
             $penilaian->jumlah_anggota_kelas = count($data_anggota_kelas);
             $penilaian->jumlah_telah_dinilai = count($data_nilai);
         }
+        // dd($data);
 
         return view('pages.teacher.data-penilaian.index', compact('title', 'data'));
     }
@@ -67,13 +71,11 @@ class LessonValueController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         for ($count_student = 0; $count_student < count($request->anggota_kelas_id); $count_student++) {
             if ($request->ko1[$count_student] >= 0 && $request->ko1[$count_student] <= 100 || $request->ko2[$count_student] >= 0 && $request->ko2[$count_student] <= 100 || $request->sub1[$count_student] >= 0 && $request->sub1[$count_student] <= 100 || $request->sub2[$count_student] >= 0 && $request->sub2[$count_student] <= 100 || $request->uts_uas[$count_student] >= 0 && $request->uts_uas[$count_student] <= 100) {
                 $data_nilai = array(
 
                     'id_learning'  => $request->id_learning,
-                    // 'id_classmember'  => $request->anggota_kelas_id[$count_student],
                     'id_student'  => $request->anggota_kelas_id[$count_student],
                     'ko1'  => ltrim($request->ko1[$count_student]),
                     'ko2'  => ltrim($request->ko2[$count_student]),
@@ -91,6 +93,8 @@ class LessonValueController extends Controller
         LessonValue::insert($store_data_nilai);
         return redirect('/teacher/data-penilaian');
     }
+
+
 
     /**
      * Display the specified resource.

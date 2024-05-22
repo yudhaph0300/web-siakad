@@ -3,9 +3,9 @@
 @section('main-content')
     <div class="app-content">
         <div class="app-content-header shadow-sm">
-            <h1 class="app-content-headerText raleway fw-bold">Data Tahun Pelajaran</h1>
-            <button class="btn btn-primary">
-                Action
+            <h1 class="app-content-headerText raleway fw-bold">Cetak Rapor</h1>
+            <button class="btn-hamburger">
+                <i class="bi bi-grid-3x3-gap"></i>
             </button>
         </div>
 
@@ -16,18 +16,25 @@
                 <div class="card-body">
                     <table class="table table-bordered mb-3">
                         <tbody>
-
                             <tr>
-                                <td style="width: 25%">Nama</td>
-                                <td>{{ $student->name }}</td>
+                                <td class="py-2" style="width: 25%">Nama</td>
+                                <td class="py-2">{{ $student->name }}</td>
                             </tr>
                             <tr>
-                                <td style="width: 25%">Tahun Pelajaran</td>
-                                <td>{{ $academic_year->tahun_pelajaran }}</td>
+                                <td class="py-2" style="width: 25%">NIS</td>
+                                <td class="py-2">{{ $student->nis }}</td>
                             </tr>
                             <tr>
-                                <td style="width: 25%">Semester</td>
-                                <td>{{ $academic_year->semester }}
+                                <td class="py-2" style="width: 25%">Kelas</td>
+                                <td class="py-2">{{ $raport[0]->class_name }}</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2" style="width: 25%">Tahun Pelajaran</td>
+                                <td class="py-2">{{ $academic_year->tahun_pelajaran }}</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2" style="width: 25%">Semester</td>
+                                <td class="py-2">{{ $academic_year->semester }}
                                     ({{ $academic_year->semester == 1 ? 'Ganjil' : 'Genap' }})</td>
                             </tr>
                         </tbody>
@@ -63,6 +70,11 @@
                         </tbody>
                     </table>
 
+                    <div class="mb-3 mt-5 text-end  ">
+                        <a href="/admin/cetak-raport" class="btn btn-outline-primary">Kembali</a>
+                        <a href="/admin/print-raport/{{ $student->id }}" target="_blank" class="btn btn-primary">Cetak
+                            Rapor</a>
+                    </div>
                 </div>
             </div>
         </div>
