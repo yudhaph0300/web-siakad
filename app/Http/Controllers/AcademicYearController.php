@@ -9,6 +9,7 @@ use App\Models\Learning;
 use App\Models\Lesson;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class AcademicYearController extends Controller
 {
@@ -27,7 +28,15 @@ class AcademicYearController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'tahun_pelajaran' => 'required|min:9|max:9',
+            'tahun_pelajaran' => [
+                'required',
+                'min:9',
+                'max:9',
+                Rule::unique('academic_years')->where(function ($query) use ($request) {
+                    return $query->where('tahun_pelajaran', $request->tahun_pelajaran)
+                        ->where('semester', $request->semester);
+                }),
+            ],
             'semester' => 'required',
         ]);
 

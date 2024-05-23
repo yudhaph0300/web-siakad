@@ -74,7 +74,9 @@
                                     <td scope="col" style="vertical-align: middle;">
                                         {{ $item->name }}</td>
                                     <td scope="col" class="text-center" style="vertical-align: middle;">
-                                        {{ $item->classname->name }}</td>
+                                        {{ $item->classname ? $item->classname->name : 'Siswa tidak memiliki kelas' }}
+                                    </td>
+
                                     <td scope="col" class="text-center" style="vertical-align: middle;">
 
                                         <a href="/admin/cetak-raport/{{ $item->id }}" class="btn btn-primary">
