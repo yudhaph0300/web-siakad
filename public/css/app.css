@@ -149,9 +149,16 @@ body {
    background-color: transparent;
    color: #12121E;
    border: none;
-   font-size: 20px;
+   font-size: 24px;
+   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+   padding: 0 !important;
 }
 
+@media screen and (min-width: 1025px) {
+   .btn-hamburger {
+      display: none;
+   }
+}
 
 
 /* Line */

@@ -8,6 +8,11 @@
    --action-color: #1CB78D;
 }
 
+.sidebar-active {
+   display: flex !important;
+}
+
+
 .sidebar {
    flex-basis: 250px;
    max-width: 250px;

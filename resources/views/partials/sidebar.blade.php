@@ -1,4 +1,4 @@
-<div class="sidebar">
+<div class="sidebar" id="sidebar">
     <div class="sidebar-header">
         <div class="app-icon">
             <h5>MTs Riyadlatul Fallah</h5>

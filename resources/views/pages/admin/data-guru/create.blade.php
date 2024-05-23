@@ -4,8 +4,8 @@
     <div class="app-content">
         <div class="app-content-header shadow-sm">
             <h1 class="app-content-headerText raleway fw-bold">Tambah guru</h1>
-            <button class="btn btn-primary">
-                Action
+            <button class="btn-hamburger" id="btn-hamburger">
+                <i class="bi bi-grid-3x3-gap"></i>
             </button>
         </div>
 

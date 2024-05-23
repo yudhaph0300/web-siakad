@@ -4,7 +4,7 @@
     <div class="app-content">
         <div class="app-content-header shadow-sm">
             <h1 class="app-content-headerText raleway fw-bold">Cetak Rapor</h1>
-            <button class="btn-hamburger">
+            <button class="btn-hamburger" id="btn-hamburger">
                 <i class="bi bi-grid-3x3-gap"></i>
             </button>
         </div>
