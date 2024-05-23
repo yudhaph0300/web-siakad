@@ -53,18 +53,14 @@
 
             <div class="card shadow mt-3">
                 <div class="card-body">
-                    <div class="row g-3">
-                        <div class="col-md-8">
-                            <p class="raleway  mb-4 mt-3">
+                    <div class="row g-3 d-flex justify-content-between mb-3">
+                        <div class="col-7 d-flex justify-content-start align-items-center">
+                            <p class="raleway ">
                                 Jumlah data siswa yang ditemukan adalah {{ $data_student_length }}
                             </p>
                         </div>
-                        <div class="col-md-2">
-                            <button class="btn btn-outline-primary rounded-pill w-100"><i
-                                    class="bi bi-file-earmark-text me-2"></i>Import</button>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="/admin/data-siswa/create" class="btn btn-outline-primary rounded-pill w-100"><i
+                        <div class="col-5 d-flex justify-content-end align-items-center">
+                            <a href="/admin/data-siswa/create" class="btn btn-outline-primary rounded-pill "><i
                                     class="bi bi-person-add me-2"></i>Tambah</a>
                         </div>
                     </div>

@@ -26,16 +26,6 @@ class RaportController extends Controller
         $query = Student::query();
 
 
-        // Filter berdasarkan kelas
-        if (session()->has('raport_filter_kelas')) {
-            if (session('raport_filter_kelas') === '__NULL__') {
-                $query->whereNull('id_class');
-            } else {
-                $query->where('id_class', session('raport_filter_kelas'));
-            }
-        }
-
-
         // Filter berdasarkan pencarian
         if (session()->has('raport_filter_search')) {
             $query->where('name', 'like', '%' . session('raport_filter_search') . '%');
