@@ -17,10 +17,16 @@
 
                     <div class="text-end mb-3">
                         <button class="btn btn-outline-primary rounded-pill" data-bs-toggle="modal"
-                            data-bs-target="#modal-tambah">
+                            data-bs-target="#add-mapel-form">
                             <i class="bi bi-person-add me-2"></i>Tambah Mata Pelajaran
                         </button>
                     </div>
+
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
 
                     <table class="table table-bordered table-hover">
                         <thead class="table-dark">
@@ -60,7 +66,7 @@
 
                                     {{-- Start Modal Edit --}}
 
-                                    <div class="modal fade" id="modal-edit-mapel-{{ $item->id }}"
+                                    <div class="modal fade edit-mapel-form" id="modal-edit-mapel-{{ $item->id }}"
                                         data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
                                         aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                         <div class="modal-dialog">
@@ -108,7 +114,7 @@
 
 
     {{-- Start Modal Tambah --}}
-    <div class="modal fade" id="modal-tambah" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade" id="add-mapel-form" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

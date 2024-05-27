@@ -47,7 +47,7 @@ class LessonController extends Controller
         $lesson->save();
 
 
-        return redirect('/admin/data-mata-pelajaran');
+        return redirect('/admin/data-mata-pelajaran')->with('success', 'Mata pelajaran berhasil ditambahkan');
     }
 
     /**
@@ -83,7 +83,7 @@ class LessonController extends Controller
         Lesson::where('id', $lesson->id)
             ->update($validateData);
 
-        return redirect('/admin/data-mata-pelajaran');
+        return redirect('/admin/data-mata-pelajaran')->with('success', 'Data mata pelajaran berhasil diupdate');
     }
 
     /**
@@ -93,6 +93,6 @@ class LessonController extends Controller
     {
         $lesson = Lesson::findOrFail($lesson);
         Lesson::destroy($lesson->id);
-        return redirect('/admin/data-mata-pelajaran');
+        return redirect('/admin/data-mata-pelajaran')->with('success', 'Mata pelajaran berhasil dihapus');
     }
 }
