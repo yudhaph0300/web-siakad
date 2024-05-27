@@ -58,7 +58,7 @@ class TeacherController extends Controller
 
         Teacher::create($validatedData);
 
-        return redirect('/admin/data-guru');
+        return redirect('/admin/data-guru')->with('success', 'Data guru berhasil ditambahkan');
     }
 
     /**
@@ -101,7 +101,7 @@ class TeacherController extends Controller
 
         Teacher::where('id', $teacher->id)
             ->update($validatedData);
-        return redirect('/admin/data-guru');
+        return redirect('/admin/data-guru')->with('success', 'Data guru berhasil diupdate');
     }
 
     /**
@@ -112,6 +112,6 @@ class TeacherController extends Controller
         $teacher = Teacher::findOrFail($teacher);
         Teacher::destroy($teacher->id);
 
-        return redirect('/admin/data-guru');
+        return redirect('/admin/data-guru')->with('success', 'Guru berhasil dihapus');
     }
 }
