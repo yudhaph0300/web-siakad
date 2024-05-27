@@ -16,10 +16,16 @@
                 <div class="card-body">
                     <div class="text-end mb-3">
                         <button class="btn btn-outline-primary rounded-pill" data-bs-toggle="modal"
-                            data-bs-target="#modal-tambah">
+                            data-bs-target="#add-class-form">
                             <i class="bi bi-person-add me-2"></i>Tambah Kelas
                         </button>
                     </div>
+
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
 
 
                     <table class="table table-bordered table-hover">
@@ -63,9 +69,9 @@
                                     </tr>
 
                                     {{-- Start Modal Edit --}}
-                                    <div class="modal fade" id="modal-edit-{{ $class->id }}" data-bs-backdrop="static"
-                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                        aria-hidden="true">
+                                    <div class="modal fade edit-class-form" id="modal-edit-{{ $class->id }}"
+                                        data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                                        aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <form method="post" action="/admin/data-kelas/{{ $class->id }}"
@@ -122,7 +128,7 @@
     </div>
 
     {{-- Start Modal Tambah --}}
-    <div class="modal fade" id="modal-tambah" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade" id="add-class-form" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

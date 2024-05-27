@@ -55,7 +55,7 @@ class ClassController extends Controller
 
         $class->save();
 
-        return redirect('/admin/data-kelas');
+        return redirect('/admin/data-kelas')->with('success', 'Kelas berhasil ditambahkan');
     }
 
     /**
@@ -96,7 +96,7 @@ class ClassController extends Controller
         ClassName::where('id', $class->id)
             ->update($validateData);
 
-        return redirect('/admin/data-kelas');
+        return redirect('/admin/data-kelas')->with('success', 'Data kelas berhasil diupdate');
     }
 
     /**
@@ -106,6 +106,6 @@ class ClassController extends Controller
     {
         $class = ClassName::findOrFail($class);
         ClassName::destroy($class->id);
-        return redirect('/admin/data-kelas');
+        return redirect('/admin/data-kelas')->with('success', 'Kelas berhasil dihapus');
     }
 }
