@@ -78,7 +78,7 @@ class StudentController extends Controller
 
         Student::create($validatedData);
 
-        return redirect('/admin/data-siswa');
+        return redirect('/admin/data-siswa')->with('success', 'Siswa berhasil ditambahkan');
     }
 
     /**
@@ -124,7 +124,7 @@ class StudentController extends Controller
 
         Student::where('id', $student->id)
             ->update($validatedData);
-        return redirect('/admin/data-siswa');
+        return redirect('/admin/data-siswa')->with('success', 'Data siswa berhasil diupdate');
     }
 
     /**
@@ -135,6 +135,6 @@ class StudentController extends Controller
         $student = Student::findOrFail($student);
         Student::destroy($student->id);
 
-        return redirect('/admin/data-siswa');
+        return redirect('/admin/data-siswa')->with('success', 'Siswa berhasil dihapus');
     }
 }

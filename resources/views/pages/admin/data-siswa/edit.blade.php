@@ -18,19 +18,19 @@
                             <img src="{{ $student->image }}" class="img-fluid" alt="">
                         </div>
                         <div class="col-md-8">
-                            <form action="/admin/data-siswa/{{ $student->id }}" method="POST"
+                            <form id="edit-student-form" action="/admin/data-siswa/{{ $student->id }}" method="POST"
                                 enctype="multipart/form-data">
                                 @method('put')
                                 @csrf
                                 <div class="mb-3">
                                     <label for="nis" class="form-label">NIS</label>
                                     <input type="text" value="{{ $student->nis }}" class="form-control custom-search"
-                                        id="nis" name="nis" placeholder="Masukan nis siswa">
+                                        id="nis" name="nis" placeholder="Masukan nis siswa" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Nama</label>
                                     <input type="text" value="{{ $student->name }}" class="form-control custom-search"
-                                        id="name" name="name" placeholder="Masukan nama siswa">
+                                        id="name" name="name" placeholder="Masukan nama siswa" required>
                                 </div>
 
 
@@ -56,7 +56,7 @@
                                 <div class="mb-3">
                                     <label for="gender" class="form-label">Jenis Kelamin</label>
                                     <select id="gender" name="gender" class="form-select custom-select"
-                                        aria-label="Default select example">
+                                        aria-label="Default select example" required>
 
                                         <option value="{{ 1 }}" {{ $student->gender == 1 ? 'selected' : '' }}>
                                             Laki-Laki
@@ -72,14 +72,14 @@
                                     <label for="birthday" class="form-label">Tanggal Lahir</label>
                                     <input type="text" value="{{ $student->birthday }}"
                                         class="form-control custom-search" id="birthday" name="birthday"
-                                        placeholder="Masukan tanggal lahir siswa">
+                                        placeholder="Masukan tanggal lahir siswa" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="address" class="form-label">Alamat</label>
                                     <input type="text" value="{{ $student->address }}"
                                         class="form-control custom-search" id="address" name="address"
-                                        placeholder="Masukan alamat siswa">
+                                        placeholder="Masukan alamat siswa" required>
                                 </div>
 
                                 <div class="mb-3">

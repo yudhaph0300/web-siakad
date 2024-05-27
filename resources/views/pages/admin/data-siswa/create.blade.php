@@ -13,37 +13,38 @@
 
             <div class="card shadow mt-3">
                 <div class="card-body">
-                    <form action="/admin/data-siswa" method="POST" enctype="multipart/form-data">
+                    <form id="add-student-form" action="/admin/data-siswa" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label for="nis" class="form-label">NIS</label>
                             <input type="number" class="form-control custom-search" id="nis" name="nis"
-                                placeholder="Masukan nis siswa">
+                                placeholder="Masukan nis siswa" required>
                         </div>
                         <div class="mb-3">
                             <label for="name" class="form-label">Nama</label>
                             <input type="text" class="form-control custom-search" id="name" name="name"
-                                placeholder="Masukan nama siswa">
+                                placeholder="Masukan nama siswa" required>
                         </div>
 
                         <div class="row g-3 mb-3">
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <label for="gender" class="form-label">Jenis Kelamin</label>
-                                <select name="gender" id="gender" class="form-select custom-search">
+                                <select name="gender" id="gender" class="form-select custom-search" required>
                                     <option value="1">Laki-laki</option>
                                     <option value="2">Perempuan</option>
                                 </select>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <label for="birthday" class="form-label">Tanggal Lahir</label>
-                                <input type="date" class="form-control custom-search" id="birthday" name="birthday">
+                                <input type="date" class="form-control custom-search" id="birthday" name="birthday"
+                                    required>
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label for="address" class="form-label">Alamat</label>
                             <input type="text" class="form-control custom-search" id="address" name="address"
-                                placeholder="Masukan alamat siswa">
+                                placeholder="Masukan alamat siswa" required>
                         </div>
 
                         <div class="mb-3">
