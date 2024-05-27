@@ -10,6 +10,13 @@
                     <p class="p-text">"Menyongsong Ilmu dengan Kehidupan Beragama"
                     </p>
 
+                    @if (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
+
                     {{-- Form --}}
                     <form method="POST" action="{{ route('auth-post-login') }}">
                         @csrf
