@@ -19,13 +19,14 @@ class LearningController extends Controller
     public function index()
     {
         $title = 'data pembelajaran';
+        $academic_year = AcademicYear::findorfail(session()->get('id_academic_year'));
         $learnings = Learning::where('id_academic_year', session()->get('id_academic_year'))->get();
 
         $lessons = Lesson::where('id_academic_year', session()->get('id_academic_year'))->get();
         $classnames = ClassName::where('id_academic_year', session()->get('id_academic_year'))->get();
         $teachers = Teacher::all();
 
-        return view('pages.admin.data-pembelajaran.index', compact('title', 'learnings', 'lessons', 'classnames', 'teachers'));
+        return view('pages.admin.data-pembelajaran.index', compact('title', 'learnings', 'lessons', 'classnames', 'teachers', 'academic_year'));
     }
 
 

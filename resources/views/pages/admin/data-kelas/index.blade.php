@@ -14,12 +14,21 @@
 
             <div class="card shadow mt-3">
                 <div class="card-body">
-                    <div class="text-end mb-3">
-                        <button class="btn btn-outline-primary rounded-pill" data-bs-toggle="modal"
-                            data-bs-target="#add-class-form">
-                            <i class="bi bi-person-add me-2"></i>Tambah Kelas
-                        </button>
+                    <div class="row g-3 d-flex justify-content-between mb-3">
+                        <div class="col-7 d-flex justify-content-start align-items-center">
+                            <p class="raleway ">
+                                Tahun Pelajaran {{ $academic_year->tahun_pelajaran }}, semester
+                                {{ $academic_year->semester }}
+                            </p>
+                        </div>
+                        <div class="col-5 d-flex justify-content-end align-items-center">
+                            <button class="btn btn-outline-primary rounded-pill" data-bs-toggle="modal"
+                                data-bs-target="#add-class-form">
+                                <i class="bi bi-person-add me-2"></i>Tambah Kelas
+                            </button>
+                        </div>
                     </div>
+
 
                     @if (session('success'))
                         <div class="alert alert-success">
