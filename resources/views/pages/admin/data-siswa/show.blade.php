@@ -15,7 +15,11 @@
                 <div class="card-body">
                     <div class="row g-3">
                         <div class="col-md-4">
-                            <img src="{{ $student->image }}" class="img-fluid" alt="">
+                            @if ($student->image)
+                                <img src="{{ asset('storage/' . $student->image) }}" class="img-fluid" alt="">
+                            @else
+                                <img src="{{ asset('assets/images/person.jpg') }}" class="img-fluid" alt="">
+                            @endif
                         </div>
                         <div class="col-md-8">
                             <table class="table table-bordered table-hover">

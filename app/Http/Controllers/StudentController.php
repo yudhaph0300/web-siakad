@@ -6,6 +6,7 @@ use App\Models\AcademicYear;
 use App\Models\ClassName;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class StudentController extends Controller
 {
@@ -69,9 +70,14 @@ class StudentController extends Controller
             'gender' => 'required|max:1',
             'birthday' => 'required',
             'address' => 'max:255',
+            'image' => 'image|file'
         ]);
 
-        $validatedData['image'] = 'https://images.pexels.com/photos/19384491/pexels-photo-19384491/free-photo-of-a-woman-holding-a-camera.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load';
+
+        if ($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('student-images');
+        }
+
         $validatedData['role'] = 'student';
         $validatedData['username'] = $request->nis;
         $validatedData['password'] = bcrypt($request->nis);
@@ -116,10 +122,17 @@ class StudentController extends Controller
             'gender' => 'required|max:1',
             'birthday' => 'required',
             'address' => 'max:255',
+            'image' => 'image|file'
         ];
         $validatedData = $request->validate($rules);
         $validatedData['id_class'] = $request->id_class;
         $validatedData['username'] = $request->nis;
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('student-images');
+        }
 
 
         Student::where('id', $student->id)

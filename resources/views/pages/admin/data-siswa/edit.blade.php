@@ -15,7 +15,11 @@
                 <div class="card-body">
                     <div class="row g-3">
                         <div class="col-md-4">
-                            <img src="{{ $student->image }}" class="img-fluid" alt="">
+                            @if ($student->image)
+                                <img src="{{ asset('storage/' . $student->image) }}" class="img-fluid" alt="">
+                            @else
+                                <img src="{{ asset('assets/images/person.jpg') }}" class="img-fluid" alt="">
+                            @endif
                         </div>
                         <div class="col-md-8">
                             <form id="edit-student-form" action="/admin/data-siswa/{{ $student->id }}" method="POST"
@@ -33,9 +37,6 @@
                                         id="name" name="name" placeholder="Masukan nama siswa" required>
                                 </div>
 
-
-
-
                                 <div class="mb-3">
                                     <label for="id_class" class="form-label">Kelas</label>
                                     <select id="id_class" name="id_class" class="form-select custom-select"
@@ -50,8 +51,6 @@
                                         @endforeach
                                     </select>
                                 </div>
-
-
 
                                 <div class="mb-3">
                                     <label for="gender" class="form-label">Jenis Kelamin</label>
@@ -73,6 +72,12 @@
                                     <input type="text" value="{{ $student->birthday }}"
                                         class="form-control custom-search" id="birthday" name="birthday"
                                         placeholder="Masukan tanggal lahir siswa" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <input type="hidden" name="oldImage" value="{{ $student->image }}">
+                                    <label for="image" class="form-label">Foto</label>
+                                    <input class="form-control" type="file" id="image" name="image">
                                 </div>
 
                                 <div class="mb-3">

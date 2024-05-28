@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('gender');
             $table->date('birthday');
             $table->string('address');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('role');
             $table->foreignId('id_class')->nullable();
             $table->timestamps();
