@@ -105,3 +105,16 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+// Alert confirmation add tapel
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("add-tapel-form");
+    form.addEventListener("submit", function (event) {
+        const confirmation = confirm(
+            "Apakah anda ingin menambahkan tahun pelajaran? Jika iya, maka anda akan diminta untuk login kembali"
+        );
+        if (!confirmation) {
+            event.preventDefault();
+        }
+    });
+});

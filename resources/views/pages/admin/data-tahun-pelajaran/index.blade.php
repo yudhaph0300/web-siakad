@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <div class="text-end mb-3">
                         <button class="btn btn-outline-primary rounded-pill" data-bs-toggle="modal"
-                            data-bs-target="#modal-tambah">
+                            data-bs-target="#add-tapel-form">
                             <i class="bi bi-person-add me-2"></i>Tambah Tahun Pelajaran
                         </button>
                     </div>
@@ -54,7 +54,7 @@
     </div>
 
     {{-- Start Modal Tambah --}}
-    <div class="modal fade" id="modal-tambah" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade" id="add-tapel-form" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
