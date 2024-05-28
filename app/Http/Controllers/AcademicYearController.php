@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AcademicYear;
 use App\Http\Requests\StoreAcademicYearRequest;
 use App\Http\Requests\UpdateAcademicYearRequest;
+use App\Models\ClassName;
 use App\Models\Learning;
 use App\Models\Lesson;
 use App\Models\Student;
@@ -57,13 +58,36 @@ class AcademicYearController extends Controller
         // Dapatkan id_academic_year dari AcademicYear yang baru saja dibuat
         $newAcademicYearId = $tapel->id;
 
-        // Dapatkan semua record dari tabel learning
+        // Duplicate lessons for the new academic year
         $lessons = Lesson::all();
-
-        // Loop melalui setiap record learning dan duplikat dengan id_academic_year baru
+        $lessonMap = [];
         foreach ($lessons as $lesson) {
-            Lesson::create([
+            $newLesson = Lesson::create([
                 'name' => $lesson->name,
+                'id_academic_year' => $newAcademicYearId,
+            ]);
+            $lessonMap[$lesson->id] = $newLesson->id;
+        }
+
+        // Duplicate classes for the new academic year
+        $classes = ClassName::all();
+        $classMap = [];
+        foreach ($classes as $class) {
+            $newClass = ClassName::create([
+                'name' => $class->name,
+                'id_academic_year' => $newAcademicYearId,
+                'id_teacher' => $class->id_teacher,
+            ]);
+            $classMap[$class->id] = $newClass->id;
+        }
+
+        // Duplicate learnings for the new academic year
+        $learnings = Learning::all();
+        foreach ($learnings as $learning) {
+            Learning::create([
+                'id_class' => $classMap[$learning->id_class],
+                'id_lesson' => $lessonMap[$learning->id_lesson],
+                'id_teacher' => $learning->id_teacher,
                 'id_academic_year' => $newAcademicYearId,
             ]);
         }
