@@ -15,7 +15,11 @@
                 <div class="card-body">
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <img src="{{ $teacher->image }}" class="img-fluid" alt="">
+                            @if ($teacher->image)
+                                <img src="{{ asset('storage/' . $teacher->image) }}" class="img-fluid" alt="">
+                            @else
+                                <img src="{{ asset('assets/images/person.jpg') }}" class="img-fluid" alt="">
+                            @endif
                         </div>
                         <div class="col-md-6">
                             <form id="edit-teacher-form" action="/admin/data-guru/{{ $teacher->id }}" method="POST"
@@ -38,6 +42,11 @@
                                         <option value="1">Laki-laki</option>
                                         <option value="2">Perempuan</option>
                                     </select>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="hidden" name="oldImage" value="{{ $teacher->image }}">
+                                    <label for="image" class="form-label">Foto</label>
+                                    <input class="form-control" type="file" id="image" name="image">
                                 </div>
                                 <div class="mb-3">
                                     <label for="address" class="form-label">Alamat</label>

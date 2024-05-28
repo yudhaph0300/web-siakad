@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('username');
             $table->string('password');
             $table->string('role');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

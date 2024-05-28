@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TeacherController extends Controller
 {
@@ -49,9 +50,12 @@ class TeacherController extends Controller
             'name' => 'required|max:55',
             'gender' => 'required|max:1',
             'address' => 'max:255',
+            'image' => 'image|file'
         ]);
 
-        $validatedData['image'] = 'https://images.pexels.com/photos/19384491/pexels-photo-19384491/free-photo-of-a-woman-holding-a-camera.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load';
+        if ($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('teacher-images');
+        }
         $validatedData['role'] = 'teacher';
         $validatedData['username'] = $request->nik;
         $validatedData['password'] = bcrypt('teacher');
@@ -93,11 +97,18 @@ class TeacherController extends Controller
             'name' => 'required|max:55',
             'gender' => 'required|max:1',
             'address' => 'max:255',
+            'image' => 'image|file'
         ];
 
 
         $validatedData = $request->validate($rules);
         $validatedData['username'] = $request->nik;
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('teacher-images');
+        }
 
         Teacher::where('id', $teacher->id)
             ->update($validatedData);

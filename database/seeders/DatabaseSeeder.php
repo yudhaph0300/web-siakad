@@ -132,8 +132,7 @@ class DatabaseSeeder extends Seeder
             'address' => 'Klampisan Tondowulan Plandaan Jombang',
             'username' => '11111',
             'password' => bcrypt('password'),
-            'role' => 'teacher',
-            'image' => 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+            'role' => 'teacher'
         ]);
         \App\Models\Teacher::factory()->create([
             'nik' => '22222',
@@ -142,8 +141,7 @@ class DatabaseSeeder extends Seeder
             'address' => 'Klampisan Tondowulan Plandaan Jombang',
             'username' => '22222',
             'password' => bcrypt('password'),
-            'role' => 'teacher',
-            'image' => 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+            'role' => 'teacher'
         ]);
         \App\Models\Teacher::factory()->create([
             'nik' => '33333',
@@ -152,8 +150,7 @@ class DatabaseSeeder extends Seeder
             'address' => 'Klampisan Tondowulan Plandaan Jombang',
             'username' => '33333',
             'password' => bcrypt('password'),
-            'role' => 'teacher',
-            'image' => 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+            'role' => 'teacher'
         ]);
         \App\Models\Teacher::factory()->create([
             'nik' => '44444',
@@ -162,8 +159,7 @@ class DatabaseSeeder extends Seeder
             'address' => 'Klampisan Tondowulan Plandaan Jombang',
             'username' => '44444',
             'password' => bcrypt('password'),
-            'role' => 'teacher',
-            'image' => 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+            'role' => 'teacher'
         ]);
 
 

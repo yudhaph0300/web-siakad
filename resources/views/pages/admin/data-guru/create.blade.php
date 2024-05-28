@@ -33,6 +33,10 @@
                             </select>
                         </div>
                         <div class="mb-3">
+                            <label for="image" class="form-label">Foto</label>
+                            <input class="form-control" type="file" id="image" name="image">
+                        </div>
+                        <div class="mb-3">
                             <label for="address" class="form-label">Alamat</label>
                             <input type="text" class="form-control custom-search" id="address" name="address"
                                 placeholder="Masukan alamat guru" required>
