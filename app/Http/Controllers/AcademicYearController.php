@@ -9,6 +9,7 @@ use App\Models\Learning;
 use App\Models\Lesson;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class AcademicYearController extends Controller
@@ -67,7 +68,8 @@ class AcademicYearController extends Controller
             ]);
         }
 
+        Auth::guard('admin')->logout();
 
-        return redirect('/admin/data-tahun-pelajaran');
+        return redirect()->route('auth-form-login');
     }
 }
