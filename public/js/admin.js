@@ -118,3 +118,31 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+// Alert confirmation add pembelajaran
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("add-pembelajaran-form");
+    form.addEventListener("submit", function (event) {
+        const confirmation = confirm(
+            "Apakah anda ingin menambahkan pembelajaran?"
+        );
+        if (!confirmation) {
+            event.preventDefault();
+        }
+    });
+});
+
+// Alert confirmation edit pembelajaran
+document.addEventListener("DOMContentLoaded", function () {
+    const forms = document.querySelectorAll(".edit-pembelajaran-form");
+    forms.forEach((form) => {
+        form.addEventListener("submit", function (event) {
+            const confirmation = confirm(
+                "Apakah anda ingin mengupdate data pembelajaran?"
+            );
+            if (!confirmation) {
+                event.preventDefault();
+            }
+        });
+    });
+});

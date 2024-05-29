@@ -58,8 +58,17 @@ class AcademicYearController extends Controller
         // Dapatkan id_academic_year dari AcademicYear yang baru saja dibuat
         $newAcademicYearId = $tapel->id;
 
+        // Get the most recent academic year
+        $lastAcademicYear = AcademicYear::orderBy('id', 'desc')->skip(1)->first();
+        if (!$lastAcademicYear) {
+            // Handle the case where there is no previous academic year
+            return redirect()->back()->withErrors(['error' => 'No previous academic year found.']);
+        }
+
+        $lastAcademicYearId = $lastAcademicYear->id;
+
         // Duplicate lessons for the new academic year
-        $lessons = Lesson::all();
+        $lessons = Lesson::where('id_academic_year', $lastAcademicYearId)->get();
         $lessonMap = [];
         foreach ($lessons as $lesson) {
             $newLesson = Lesson::create([
@@ -70,7 +79,7 @@ class AcademicYearController extends Controller
         }
 
         // Duplicate classes for the new academic year
-        $classes = ClassName::all();
+        $classes = ClassName::where('id_academic_year', $lastAcademicYearId)->get();
         $classMap = [];
         foreach ($classes as $class) {
             $newClass = ClassName::create([
@@ -82,7 +91,7 @@ class AcademicYearController extends Controller
         }
 
         // Duplicate learnings for the new academic year
-        $learnings = Learning::all();
+        $learnings = Learning::where('id_academic_year', $lastAcademicYearId)->get();
         foreach ($learnings as $learning) {
             Learning::create([
                 'id_class' => $classMap[$learning->id_class],

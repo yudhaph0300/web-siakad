@@ -93,6 +93,9 @@ class LessonController extends Controller
     {
         $lesson = Lesson::findOrFail($lesson);
         Lesson::destroy($lesson->id);
+
+        // Hapus pembelajaran yang terkait dengan mapel
+        Learning::where('id_lesson', $lesson->id)->delete();
         return redirect('/admin/data-mata-pelajaran')->with('success', 'Mata pelajaran berhasil dihapus');
     }
 }

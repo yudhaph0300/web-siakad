@@ -43,7 +43,7 @@ class LearningController extends Controller
         $learning->save();
 
 
-        return redirect('/admin/data-pembelajaran');
+        return redirect('/admin/data-pembelajaran')->with('success', 'Pembelajaran berhasil ditambahkan');
     }
 
     /**
@@ -65,16 +65,31 @@ class LearningController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateLearningRequest $request, Learning $learning)
+    public function update(Request $request, $learning)
     {
-        //
+        $learning = Learning::findOrFail($learning);
+
+        $rules = [
+            'id_lesson' => 'required',
+            'id_class' => 'required',
+            'id_teacher' => 'required'
+        ];
+
+        $validateData = $request->validate($rules);
+
+        Learning::where('id', $learning->id)
+            ->update($validateData);
+
+        return redirect('/admin/data-pembelajaran')->with('success', 'Data pembelajaran berhasil diupdate');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Learning $learning)
+    public function destroy($learning)
     {
-        //
+        $learning = Learning::findOrFail($learning);
+        Learning::destroy($learning->id);
+        return redirect('/admin/data-pembelajaran')->with('success', 'Pembelajaran berhasil dihapus');
     }
 }
