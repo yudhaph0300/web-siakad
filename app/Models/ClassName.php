@@ -28,9 +28,4 @@ class ClassName extends Model
     {
         return $this->belongsTo(AcademicYear::class, 'id_academic_year');
     }
-
-    public function class_member()
-    {
-        return $this->hasMany(ClassMember::class);
-    }
 }

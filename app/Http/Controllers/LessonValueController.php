@@ -7,7 +7,6 @@ use App\Http\Requests\StoreLessonValueRequest;
 use App\Http\Requests\UpdateLessonValueRequest;
 use App\Imports\LessonValueImport;
 use App\Models\AcademicYear;
-use App\Models\ClassMember;
 use App\Models\ClassName;
 use App\Models\Learning;
 use App\Models\Student;

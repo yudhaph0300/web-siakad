@@ -28,9 +28,4 @@ class Student extends Authenticatable
     {
         return $this->hasOne(LessonValue::class);
     }
-
-    public function class_member()
-    {
-        return $this->hasMany(ClassMember::class);
-    }
 }
