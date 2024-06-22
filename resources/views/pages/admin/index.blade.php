@@ -26,7 +26,7 @@
 
             </div>
             <div class="row g-3">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="card card-dashboard text-center">
                         <p class="card-title raleway heading-5 fw-bold">Total Siswa</p>
                         <p class="heading-1">{{ $student }}</p>
@@ -36,7 +36,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="card card-dashboard text-center">
                         <p class="card-title raleway heading-5 fw-bold">Total Guru</p>
                         <p class="heading-1">{{ $teacher }}</p>
@@ -46,7 +46,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="card card-dashboard text-center">
                         <p class="card-title raleway heading-5 fw-bold">Total Kelas</p>
                         <p class="heading-1">{{ $class }}</p>
@@ -56,7 +56,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="card card-dashboard text-center">
                         <p class="card-title raleway heading-5 fw-bold">Total Mata Pelajaran</p>
                         <p class="heading-1">{{ $lessons }}</p>
@@ -66,7 +66,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="card card-dashboard text-center">
                         <p class="card-title raleway heading-5 fw-bold">Total Pembelajaran</p>
                         <p class="heading-1">{{ $learnings }}</p>
