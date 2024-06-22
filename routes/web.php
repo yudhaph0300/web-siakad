@@ -3,6 +3,7 @@
 use App\Http\Controllers\AcademicYearController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\ImportController;
@@ -44,9 +45,10 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('auth-post-logou
 // For admin
 Route::prefix('admin')->group(function () {
     Route::middleware(['auth:admin'])->group(function () {
-        Route::get('/dashboard', function () {
-            return view('pages.admin.index', ["title" => 'dashboard']);
-        })->name('admin-dashboard');
+        Route::get('/dashboard', [AdminDashboardController::class, 'index']);
+        // Route::get('/dashboard', function () {
+        //     return view('pages.admin.index', ["title" => 'dashboard']);
+        // })->name('admin-dashboard');
         Route::resource('/data-siswa', StudentController::class);
         Route::resource('/data-guru', TeacherController::class);
         Route::resource('/data-kelas', ClassController::class);
