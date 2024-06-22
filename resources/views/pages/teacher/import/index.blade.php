@@ -21,9 +21,12 @@
 
                     <div class="line my-4"></div>
 
-                    @if (session('success'))
-                        <p>{{ session('success') }}</p>
+                    @if (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
                     @endif
+
 
                     <div class="mb-3">
                         <form action="{{ route('import-lesson-value') }}" method="POST" enctype="multipart/form-data">
