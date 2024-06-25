@@ -13,6 +13,7 @@ use App\Http\Controllers\LessonValueController;
 use App\Http\Controllers\LessonValueExportController;
 use App\Http\Controllers\RaportController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\StudentDashboardContoller;
 use App\Http\Controllers\StudentRaportController;
 use App\Http\Controllers\TeacherController;
 use App\Models\LessonValue;
@@ -45,10 +46,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('auth-post-logou
 // For admin
 Route::prefix('admin')->group(function () {
     Route::middleware(['auth:admin'])->group(function () {
-        Route::get('/dashboard', [AdminDashboardController::class, 'index']);
-        // Route::get('/dashboard', function () {
-        //     return view('pages.admin.index', ["title" => 'dashboard']);
-        // })->name('admin-dashboard');
+        Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin-dashboard');
         Route::resource('/data-siswa', StudentController::class);
         Route::resource('/data-guru', TeacherController::class);
         Route::resource('/data-kelas', ClassController::class);
@@ -63,9 +61,8 @@ Route::prefix('admin')->group(function () {
 // For student
 Route::prefix('student')->group(function () {
     Route::middleware(['auth:student'])->group(function () {
-        Route::get('/dashboard', function () {
-            return view('pages.student.index', ["title" => 'dashboard']);
-        })->name('student-dashboard');
+
+        Route::get('/dashboard', [StudentDashboardContoller::class, 'index'])->name('student-dashboard');
         Route::resource('/raport', StudentRaportController::class);
     });
 });
