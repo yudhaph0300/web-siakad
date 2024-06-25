@@ -16,6 +16,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentDashboardContoller;
 use App\Http\Controllers\StudentRaportController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\TeacherDashboardController;
 use App\Models\LessonValue;
 
 /*
@@ -61,7 +62,6 @@ Route::prefix('admin')->group(function () {
 // For student
 Route::prefix('student')->group(function () {
     Route::middleware(['auth:student'])->group(function () {
-
         Route::get('/dashboard', [StudentDashboardContoller::class, 'index'])->name('student-dashboard');
         Route::resource('/raport', StudentRaportController::class);
     });
@@ -70,9 +70,7 @@ Route::prefix('student')->group(function () {
 // For teacher
 Route::prefix('teacher')->group(function () {
     Route::middleware(['auth:teacher'])->group(function () {
-        Route::get('/dashboard', function () {
-            return view('pages.teacher.index', ["title" => 'dashboard']);
-        })->name('teacher-dashboard');
+        Route::get('/dashboard', [TeacherDashboardController::class, 'index'])->name('teacher-dashboard');
         Route::resource('/data-penilaian', LessonValueController::class);
         Route::get('/import-nilai/{id_learning}', [ImportController::class, 'index']);
         Route::post('/import-nilai/proses', [ImportController::class, 'import'])->name('import-lesson-value');

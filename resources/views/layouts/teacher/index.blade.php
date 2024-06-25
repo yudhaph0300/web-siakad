@@ -21,6 +21,12 @@
     <link rel="stylesheet" href="/css/teacher.css">
     <link rel="stylesheet" href="/css/teacher-content/index.css">
 
+
+    <link rel="stylesheet" href="/css/admin.css">
+
+    <link rel="stylesheet" href="/css/admin-content/index.css">
+
+
 </head>
 
 <body>
