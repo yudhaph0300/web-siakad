@@ -116,7 +116,6 @@ class LessonValueController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request);
         for ($count_student = 0; $count_student < count($request->anggota_kelas_id); $count_student++) {
 
             if ($request->ko1[$count_student] >= 0 && $request->ko1[$count_student] <= 100 || $request->ko2[$count_student] >= 0 && $request->ko2[$count_student] <= 100 || $request->sub1[$count_student] >= 0 && $request->sub1[$count_student] <= 100 || $request->sub2[$count_student] >= 0 && $request->sub2[$count_student] <= 100 || $request->uts_uas[$count_student] >= 0 && $request->uts_uas[$count_student] <= 100) {
