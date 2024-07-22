@@ -1,9 +1,9 @@
-@extends('layouts.admin.index')
+@extends('layouts.student.index')
 
 @section('main-content')
     <div class="app-content">
         <div class="app-content-header shadow-sm">
-            <h1 class="app-content-headerText raleway fw-bold">Cetak Rapor</h1>
+            <h1 class="app-content-headerText raleway fw-bold">Rapor Siswa</h1>
             <button class="btn-hamburger" id="btn-hamburger">
                 <i class="bi bi-grid-3x3-gap"></i>
             </button>
@@ -65,9 +65,8 @@
                         </table>
 
                         <div class="mb-3 mt-5 text-end  ">
-                            <a href="/admin/cetak-raport" class="btn btn-outline-primary">Kembali</a>
-                            <a href="/admin/cetak-raport/{{ $student->id }}/pdf" target="_blank"
-                                class="btn btn-primary">Cetak Rapor</a>
+                            <a href="/student/raport" class="btn btn-outline-primary">Kembali</a>
+
                         </div>
                     </div>
                 </div>

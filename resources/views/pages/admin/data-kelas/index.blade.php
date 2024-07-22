@@ -88,7 +88,7 @@
                                                     @method('put')
                                                     @csrf
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="staticBackdropLabel">Tambah Kelas</h5>
+                                                        <h5 class="modal-title" id="staticBackdropLabel">Edit Kelas</h5>
                                                     </div>
 
                                                     <div class="modal-body">

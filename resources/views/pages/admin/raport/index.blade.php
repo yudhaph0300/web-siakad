@@ -60,9 +60,9 @@
                                         <a href="/admin/cetak-raport/{{ $item->id }}" class="btn btn-primary">
                                             Lihat
                                         </a>
-                                        <a href="/admin/print-raport/{{ $item->id }}" target="_blank"
-                                            class="btn btn-primary">Cetak
-                                            Rapor</a>
+
+                                        <a href="/admin/cetak-raport/{{ $item->id }}/pdf" target="_blank"
+                                            class="btn btn-primary">Cetak Rapor</a>
                                     </td>
                                 </tr>
                             @endforeach

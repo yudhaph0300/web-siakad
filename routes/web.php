@@ -55,6 +55,7 @@ Route::prefix('admin')->group(function () {
         Route::resource('/data-pembelajaran', LearningController::class);
         Route::resource('/data-tahun-pelajaran', AcademicYearController::class);
         Route::resource('/cetak-raport', RaportController::class);
+        Route::get('/cetak-raport/{studentId}/pdf', [RaportController::class, 'generatePDF']);
         Route::get('/print-raport/{id}', [RaportController::class, 'print']);
     });
 });

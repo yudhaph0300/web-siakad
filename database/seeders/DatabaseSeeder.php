@@ -17,103 +17,255 @@ class DatabaseSeeder extends Seeder
     {
 
         \App\Models\Student::factory()->create([
-            'username' => 'yudha',
+            'username' => '153105',
             'password' => bcrypt('password'),
-            'nis' => '123123',
-            'name' => 'Mohammad Yudha Pamungkas',
+            'nis' => '153105',
+            'name' => 'Andi Permana',
             'gender' => 1,
-            'birthday' => '2015-03-31',
-            'address' => 'Klampisan, Tondowulan, Plandaan, Jombang',
-            'role' => 'student',
-            'id_class' => 1
-        ]);
-        \App\Models\Student::factory()->create([
-            'username' => 'saipul',
-            'password' => bcrypt('password'),
-            'nis' => '121212',
-            'name' => 'Saipul Akbar',
-            'gender' => 1,
-            'birthday' => '2015-03-31',
-            'address' => 'Klampisan, Tondowulan, Plandaan, Jombang',
-            'role' => 'student',
-            'id_class' => 1
-        ]);
-        \App\Models\Student::factory()->create([
-            'username' => 'rozi',
-            'password' => bcrypt('password'),
-            'nis' => '131313',
-            'name' => 'Rozi Saksono',
-            'gender' => 1,
-            'birthday' => '2015-03-31',
-            'address' => 'Klampisan, Tondowulan, Plandaan, Jombang',
-            'role' => 'student',
-            'id_class' => 1
-        ]);
-        \App\Models\Student::factory()->create([
-            'username' => 'solikin',
-            'password' => bcrypt('password'),
-            'nis' => '141414',
-            'name' => 'Solikin Nikilos',
-            'gender' => 1,
-            'birthday' => '2015-03-31',
-            'address' => 'Klampisan, Tondowulan, Plandaan, Jombang',
+            'birthday' => '2014-01-15',
+            'address' => 'Surabaya',
             'role' => 'student',
             'id_class' => 2
         ]);
+
         \App\Models\Student::factory()->create([
-            'username' => 'fadwa',
+            'username' => '153106',
             'password' => bcrypt('password'),
-            'nis' => '141614',
-            'name' => 'Fadwa Nazirah',
+            'nis' => '153106',
+            'name' => 'Budi Santoso',
+            'gender' => 1,
+            'birthday' => '2013-05-23',
+            'address' => 'Jakarta',
+            'role' => 'student',
+            'id_class' => 3
+        ]);
+
+        \App\Models\Student::factory()->create([
+            'username' => '153107',
+            'password' => bcrypt('password'),
+            'nis' => '153107',
+            'name' => 'Citra Dewi',
             'gender' => 2,
-            'birthday' => '2015-03-31',
-            'address' => 'Malang',
+            'birthday' => '2015-07-12',
+            'address' => 'Bandung',
+            'role' => 'student',
+            'id_class' => 1
+        ]);
+
+        \App\Models\Student::factory()->create([
+            'username' => '153108',
+            'password' => bcrypt('password'),
+            'nis' => '153108',
+            'name' => 'Dedi Firmansyah',
+            'gender' => 1,
+            'birthday' => '2012-11-08',
+            'address' => 'Yogyakarta',
             'role' => 'student',
             'id_class' => 2
         ]);
+
         \App\Models\Student::factory()->create([
-            'username' => 'maria',
+            'username' => '153109',
             'password' => bcrypt('password'),
-            'nis' => '110614',
-            'name' => 'Maria Astrid',
+            'nis' => '153109',
+            'name' => 'Eka Lestari',
             'gender' => 2,
-            'birthday' => '2015-03-31',
-            'address' => 'Malang',
+            'birthday' => '2014-03-17',
+            'address' => 'Semarang',
             'role' => 'student',
-            'id_class' => 2
+            'id_class' => 1
         ]);
+
         \App\Models\Student::factory()->create([
-            'username' => 'hedara',
+            'username' => '153110',
             'password' => bcrypt('password'),
-            'nis' => '140814',
-            'name' => 'Hedara Putri',
+            'nis' => '153110',
+            'name' => 'Fajar Nugroho',
+            'gender' => 1,
+            'birthday' => '2013-09-25',
+            'address' => 'Surabaya',
+            'role' => 'student',
+            'id_class' => 3
+        ]);
+
+        \App\Models\Student::factory()->create([
+            'username' => '153111',
+            'password' => bcrypt('password'),
+            'nis' => '153111',
+            'name' => 'Gita Anggraeni',
             'gender' => 2,
-            'birthday' => '2015-03-31',
+            'birthday' => '2015-01-13',
             'address' => 'Malang',
             'role' => 'student',
             'id_class' => 3
         ]);
+
         \App\Models\Student::factory()->create([
-            'username' => 'bela',
+            'username' => '153112',
             'password' => bcrypt('password'),
-            'nis' => '140104',
-            'name' => 'Nabela Zakaria',
+            'nis' => '153112',
+            'name' => 'Hendra Pratama',
+            'gender' => 1,
+            'birthday' => '2012-04-18',
+            'address' => 'Makassar',
+            'role' => 'student',
+            'id_class' => 2
+        ]);
+
+        \App\Models\Student::factory()->create([
+            'username' => '153113',
+            'password' => bcrypt('password'),
+            'nis' => '153113',
+            'name' => 'Indra Wijaya',
+            'gender' => 1,
+            'birthday' => '2013-06-21',
+            'address' => 'Palembang',
+            'role' => 'student',
+            'id_class' => 2
+        ]);
+
+        \App\Models\Student::factory()->create([
+            'username' => '153114',
+            'password' => bcrypt('password'),
+            'nis' => '153114',
+            'name' => 'Joko Susanto',
+            'gender' => 1,
+            'birthday' => '2014-08-29',
+            'address' => 'Medan',
+            'role' => 'student',
+            'id_class' => 1
+        ]);
+
+        \App\Models\Student::factory()->create([
+            'username' => '153115',
+            'password' => bcrypt('password'),
+            'nis' => '153115',
+            'name' => 'Kartini Putri',
             'gender' => 2,
-            'birthday' => '2015-03-31',
-            'address' => 'Malang',
+            'birthday' => '2015-12-12',
+            'address' => 'Denpasar',
             'role' => 'student',
             'id_class' => 3
         ]);
+
         \App\Models\Student::factory()->create([
-            'username' => 'abdillah',
+            'username' => '153116',
             'password' => bcrypt('password'),
-            'nis' => '153104',
-            'name' => 'Muhammad Abdilllah',
-            'gender' => 1,
-            'birthday' => '2015-03-31',
-            'address' => 'Malang',
+            'nis' => '153116',
+            'name' => 'Lina Oktaviani',
+            'gender' => 2,
+            'birthday' => '2013-02-15',
+            'address' => 'Banda Aceh',
+            'role' => 'student',
+            'id_class' => 1
+        ]);
+
+        \App\Models\Student::factory()->create([
+            'username' => '153117',
+            'password' => bcrypt('password'),
+            'nis' => '153117',
+            'name' => 'Mira Utami',
+            'gender' => 2,
+            'birthday' => '2014-05-06',
+            'address' => 'Pontianak',
             'role' => 'student',
             'id_class' => 3
+        ]);
+
+        \App\Models\Student::factory()->create([
+            'username' => '153118',
+            'password' => bcrypt('password'),
+            'nis' => '153118',
+            'name' => 'Nanda Fadhilah',
+            'gender' => 2,
+            'birthday' => '2012-09-18',
+            'address' => 'Pekanbaru',
+            'role' => 'student',
+            'id_class' => 2
+        ]);
+
+        \App\Models\Student::factory()->create([
+            'username' => '153119',
+            'password' => bcrypt('password'),
+            'nis' => '153119',
+            'name' => 'Omar Sharif',
+            'gender' => 1,
+            'birthday' => '2013-11-30',
+            'address' => 'Banjarmasin',
+            'role' => 'student',
+            'id_class' => 3
+        ]);
+
+        \App\Models\Student::factory()->create([
+            'username' => '153120',
+            'password' => bcrypt('password'),
+            'nis' => '153120',
+            'name' => 'Putra Aditya',
+            'gender' => 1,
+            'birthday' => '2014-04-20',
+            'address' => 'Batam',
+            'role' => 'student',
+            'id_class' => 1
+        ]);
+
+        \App\Models\Student::factory()->create([
+            'username' => '153121',
+            'password' => bcrypt('password'),
+            'nis' => '153121',
+            'name' => 'Qory Mawar',
+            'gender' => 2,
+            'birthday' => '2015-06-10',
+            'address' => 'Manado',
+            'role' => 'student',
+            'id_class' => 2
+        ]);
+
+        \App\Models\Student::factory()->create([
+            'username' => '153122',
+            'password' => bcrypt('password'),
+            'nis' => '153122',
+            'name' => 'Rendi Saputra',
+            'gender' => 1,
+            'birthday' => '2012-01-08',
+            'address' => 'Padang',
+            'role' => 'student',
+            'id_class' => 1
+        ]);
+
+        \App\Models\Student::factory()->create([
+            'username' => '153123',
+            'password' => bcrypt('password'),
+            'nis' => '153123',
+            'name' => 'Siti Aminah',
+            'gender' => 2,
+            'birthday' => '2013-03-11',
+            'address' => 'Mataram',
+            'role' => 'student',
+            'id_class' => 3
+        ]);
+
+        \App\Models\Student::factory()->create([
+            'username' => '153124',
+            'password' => bcrypt('password'),
+            'nis' => '153124',
+            'name' => 'Teguh Santoso',
+            'gender' => 1,
+            'birthday' => '2014-07-23',
+            'address' => 'Ambon',
+            'role' => 'student',
+            'id_class' => 2
+        ]);
+
+        \App\Models\Student::factory()->create([
+            'username' => '153125',
+            'password' => bcrypt('password'),
+            'nis' => '153125',
+            'name' => 'Umi Kalsum',
+            'gender' => 2,
+            'birthday' => '2015-02-17',
+            'address' => 'Kupang',
+            'role' => 'student',
+            'id_class' => 1
         ]);
 
 

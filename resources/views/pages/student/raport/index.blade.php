@@ -22,13 +22,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="text-center" style="vertical-align: middle;">1</td>
-                                <td class="text-center" style="vertical-align: middle;">2020/2021</td>
-                                <td class="text-center" style="vertical-align: middle;">1 (Ganjil)</td>
-                                <td class="text-center" style="vertical-align: middle;"><button
-                                        class="btn btn-primary">Lihat</button></td>
-                            </tr>
+                            @foreach ($academic_year as $index => $item)
+                                <tr>
+                                    <td class="text-center" style="vertical-align: middle;">{{ $index + 1 }}</td>
+                                    <td class="text-center" style="vertical-align: middle;">{{ $item->tahun_pelajaran }}
+                                    </td>
+                                    <td class="text-center" style="vertical-align: middle;">{{ $item->semester }}</td>
+                                    <td class="text-center" style="vertical-align: middle;">
+                                        <a href="/student/raport/{{ $item->id }}" class="btn btn-primary">Lihat</a>
+                                    </td>
+                                </tr>
+                            @endforeach
 
                         </tbody>
                     </table>
