@@ -50,7 +50,8 @@ class TeacherController extends Controller
             'name' => 'required|max:55',
             'gender' => 'required|max:1',
             'address' => 'max:255',
-            'image' => 'image|file'
+            'image' => 'image|file',
+            'telp' => 'required'
         ]);
 
         if ($request->file('image')) {
@@ -81,8 +82,19 @@ class TeacherController extends Controller
     public function edit($teacher)
     {
         $teacher = Teacher::findOrFail($teacher);
-        $title = 'data siswa';
+        $title = 'data guru';
         return view('pages.admin.data-guru.edit', compact('teacher', 'title'));
+    }
+
+    public function resetPassword($id)
+    {
+        $teacher = Teacher::findOrFail($id);
+        $resetPassword = $teacher->nik . substr($teacher->name, 0, 3);
+
+        $teacher->password = bcrypt($resetPassword);
+        $teacher->save();
+
+        return redirect('/admin/data-guru')->with('success', 'Password ' . $teacher->name . ' Berhasil Direset');
     }
 
     /**
@@ -97,7 +109,8 @@ class TeacherController extends Controller
             'name' => 'required|max:55',
             'gender' => 'required|max:1',
             'address' => 'max:255',
-            'image' => 'image|file'
+            'image' => 'image|file',
+            'telp' => 'required'
         ];
 
 

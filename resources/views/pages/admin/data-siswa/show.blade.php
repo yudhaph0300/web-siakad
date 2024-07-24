@@ -59,6 +59,10 @@
 
                                     </tr>
                                     <tr>
+                                        <td>Nomor Telpon</td>
+                                        <td>+62{{ $student->telp }}</td>
+                                    </tr>
+                                    <tr>
                                         <td>Tanggal Lahir</td>
                                         <td>{{ $student->birthday }}</td>
                                     </tr>

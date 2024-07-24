@@ -56,9 +56,12 @@
                             </select>
                         </div>
 
-                        <p class="p-text text-center">Terjadi masalah ketika melakukan login? <span><a href="#"
-                                    class="btn-link">hubungi
-                                    admin</a></span>
+                        <p class="p-text text-center">Terjadi masalah ketika melakukan login? <span><a
+                                    href="https://wa.me/6283833735915?text=**Sistem Informasi Akademik**%0A**MTs Riyadlatul Fallah**%0A%0ANama:%20%0ASiswa/Guru:%20%0AMasalah:%20"
+                                    target="_blank">
+                                    Hubungi Admin
+                                </a>
+                            </span>
                         </p>
 
                         <button type="submit" class="btn btn-primary w-100">Login</button>

@@ -70,6 +70,10 @@
 
                                 </tr>
                                 <tr>
+                                    <td>Nomor Telpon</td>
+                                    <td>+62{{ $student->telp }}</td>
+                                </tr>
+                                <tr>
                                     <td>Tanggal Lahir</td>
                                     <td>{{ $student->birthday }}</td>
                                 </tr>
@@ -82,6 +86,28 @@
                         </table>
 
                     </div>
+
+
+                    <div class="card card-dashboard mt-2">
+
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
+
+
+
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#change-password">
+                            Ubah Password
+                        </button>
+                    </div>
                 </div>
 
 
@@ -90,4 +116,38 @@
 
         </div>
     </div>
+
+    {{-- Start Modal Ubah Password --}}
+    <div class="modal fade" id="change-password" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="post" action="/student/dashboard/change-password" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Ubah Password</h5>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="currentPassword" class="form-label">Password Lama</label>
+                            <input type="password" class="form-control custom-search" id="currentPassword"
+                                name="currentPassword" placeholder="Masukan password lama" required autofocus>
+                        </div>
+                        <div class="mb-3">
+                            <label for="newPassword" class="form-label">Password Baru</label>
+                            <input type="password" class="form-control custom-search" id="newPassword" name="newPassword"
+                                placeholder="Masukan password baru" required autofocus>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{-- End Modal Ubah Password --}}
 @endsection

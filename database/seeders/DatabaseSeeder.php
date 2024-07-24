@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Student::factory()->create([
             'username' => '153105',
+            'telp' => '89698289699',
             'password' => bcrypt('password'),
             'nis' => '153105',
             'name' => 'Andi Permana',
@@ -30,6 +31,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Student::factory()->create([
             'username' => '153106',
+            'telp' => '89698289699',
             'password' => bcrypt('password'),
             'nis' => '153106',
             'name' => 'Budi Santoso',
@@ -42,6 +44,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Student::factory()->create([
             'username' => '153107',
+            'telp' => '89698289699',
             'password' => bcrypt('password'),
             'nis' => '153107',
             'name' => 'Citra Dewi',
@@ -54,6 +57,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Student::factory()->create([
             'username' => '153108',
+            'telp' => '89698289699',
             'password' => bcrypt('password'),
             'nis' => '153108',
             'name' => 'Dedi Firmansyah',
@@ -66,6 +70,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Student::factory()->create([
             'username' => '153109',
+            'telp' => '89698289699',
             'password' => bcrypt('password'),
             'nis' => '153109',
             'name' => 'Eka Lestari',
@@ -78,6 +83,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Student::factory()->create([
             'username' => '153110',
+            'telp' => '89698289699',
             'password' => bcrypt('password'),
             'nis' => '153110',
             'name' => 'Fajar Nugroho',
@@ -90,6 +96,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Student::factory()->create([
             'username' => '153111',
+            'telp' => '89698289699',
             'password' => bcrypt('password'),
             'nis' => '153111',
             'name' => 'Gita Anggraeni',
@@ -102,6 +109,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Student::factory()->create([
             'username' => '153112',
+            'telp' => '89698289699',
             'password' => bcrypt('password'),
             'nis' => '153112',
             'name' => 'Hendra Pratama',
@@ -114,6 +122,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Student::factory()->create([
             'username' => '153113',
+            'telp' => '89698289699',
             'password' => bcrypt('password'),
             'nis' => '153113',
             'name' => 'Indra Wijaya',
@@ -126,6 +135,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Student::factory()->create([
             'username' => '153114',
+            'telp' => '89698289699',
             'password' => bcrypt('password'),
             'nis' => '153114',
             'name' => 'Joko Susanto',
@@ -138,6 +148,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Student::factory()->create([
             'username' => '153115',
+            'telp' => '89698289699',
             'password' => bcrypt('password'),
             'nis' => '153115',
             'name' => 'Kartini Putri',
@@ -150,6 +161,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Student::factory()->create([
             'username' => '153116',
+            'telp' => '89698289699',
             'password' => bcrypt('password'),
             'nis' => '153116',
             'name' => 'Lina Oktaviani',
@@ -162,6 +174,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Student::factory()->create([
             'username' => '153117',
+            'telp' => '89698289699',
             'password' => bcrypt('password'),
             'nis' => '153117',
             'name' => 'Mira Utami',
@@ -174,6 +187,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Student::factory()->create([
             'username' => '153118',
+            'telp' => '89698289699',
             'password' => bcrypt('password'),
             'nis' => '153118',
             'name' => 'Nanda Fadhilah',
@@ -186,6 +200,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Student::factory()->create([
             'username' => '153119',
+            'telp' => '89698289699',
             'password' => bcrypt('password'),
             'nis' => '153119',
             'name' => 'Omar Sharif',
@@ -198,6 +213,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Student::factory()->create([
             'username' => '153120',
+            'telp' => '89698289699',
             'password' => bcrypt('password'),
             'nis' => '153120',
             'name' => 'Putra Aditya',
@@ -210,6 +226,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Student::factory()->create([
             'username' => '153121',
+            'telp' => '89698289699',
             'password' => bcrypt('password'),
             'nis' => '153121',
             'name' => 'Qory Mawar',
@@ -222,6 +239,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Student::factory()->create([
             'username' => '153122',
+            'telp' => '89698289699',
             'password' => bcrypt('password'),
             'nis' => '153122',
             'name' => 'Rendi Saputra',
@@ -234,6 +252,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Student::factory()->create([
             'username' => '153123',
+            'telp' => '89698289699',
             'password' => bcrypt('password'),
             'nis' => '153123',
             'name' => 'Siti Aminah',
@@ -246,6 +265,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Student::factory()->create([
             'username' => '153124',
+            'telp' => '89698289699',
             'password' => bcrypt('password'),
             'nis' => '153124',
             'name' => 'Teguh Santoso',
@@ -258,6 +278,7 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Student::factory()->create([
             'username' => '153125',
+            'telp' => '89698289699',
             'password' => bcrypt('password'),
             'nis' => '153125',
             'name' => 'Umi Kalsum',
@@ -282,6 +303,7 @@ class DatabaseSeeder extends Seeder
             'gender' => 1,
             'address' => 'Klampisan Tondowulan Plandaan Jombang',
             'username' => '11111',
+            'telp' => '89698289699',
             'password' => bcrypt('password'),
             'role' => 'teacher'
         ]);
@@ -291,6 +313,7 @@ class DatabaseSeeder extends Seeder
             'gender' => 1,
             'address' => 'Klampisan Tondowulan Plandaan Jombang',
             'username' => '22222',
+            'telp' => '89698289699',
             'password' => bcrypt('password'),
             'role' => 'teacher'
         ]);
@@ -300,6 +323,7 @@ class DatabaseSeeder extends Seeder
             'gender' => 2,
             'address' => 'Klampisan Tondowulan Plandaan Jombang',
             'username' => '33333',
+            'telp' => '89698289699',
             'password' => bcrypt('password'),
             'role' => 'teacher'
         ]);
@@ -309,6 +333,7 @@ class DatabaseSeeder extends Seeder
             'gender' => 1,
             'address' => 'Klampisan Tondowulan Plandaan Jombang',
             'username' => '44444',
+            'telp' => '89698289699',
             'password' => bcrypt('password'),
             'role' => 'teacher'
         ]);

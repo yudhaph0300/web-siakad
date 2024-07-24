@@ -32,6 +32,16 @@
                                 <option value="2">Perempuan</option>
                             </select>
                         </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">+62</span>
+                            <div class="form-floating">
+                                <input type="number" class="form-control" id="telp" name="telp"
+                                    placeholder="Nomor Telpon" required>
+                                <label for="telp">Nomor Telpon</label>
+                            </div>
+                        </div>
+
                         <div class="mb-3">
                             <label for="image" class="form-label">Foto</label>
                             <input class="form-control" type="file" id="image" name="image">

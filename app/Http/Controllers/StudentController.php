@@ -70,7 +70,8 @@ class StudentController extends Controller
             'gender' => 'required|max:1',
             'birthday' => 'required',
             'address' => 'max:255',
-            'image' => 'image|file'
+            'image' => 'image|file',
+            'telp' => 'required'
         ]);
 
 
@@ -108,6 +109,17 @@ class StudentController extends Controller
         return view('pages.admin.data-siswa.edit', compact('student', 'title', 'classnames'));
     }
 
+    public function resetPassword($id)
+    {
+        $student = Student::findOrFail($id);
+        $resetPassword = $student->nis . substr($student->name, 0, 3);
+
+        $student->password = bcrypt($resetPassword);
+        $student->save();
+
+        return redirect('/admin/data-siswa')->with('success', 'Password ' . $student->name . ' Berhasil Direset');
+    }
+
     /**
      * Update the specified resource in storage.
      */
@@ -122,7 +134,8 @@ class StudentController extends Controller
             'gender' => 'required|max:1',
             'birthday' => 'required',
             'address' => 'max:255',
-            'image' => 'image|file'
+            'image' => 'image|file',
+            'telp' => 'required'
         ];
         $validatedData = $request->validate($rules);
         $validatedData['id_class'] = $request->id_class;

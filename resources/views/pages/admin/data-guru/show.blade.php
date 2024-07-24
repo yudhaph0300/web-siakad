@@ -46,6 +46,10 @@
                                         @endif
                                     </tr>
                                     <tr>
+                                        <td>Nomor Telpon</td>
+                                        <td>+62{{ $teacher->telp }}</td>
+                                    </tr>
+                                    <tr>
                                         <td>Alamat</td>
                                         <td>{{ $teacher->address }}</td>
                                     </tr>

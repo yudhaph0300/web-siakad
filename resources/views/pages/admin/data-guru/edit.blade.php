@@ -13,6 +13,7 @@
 
             <div class="card shadow mt-3">
                 <div class="card-body">
+
                     <div class="row g-3">
                         <div class="col-md-6">
                             @if ($teacher->image)
@@ -43,6 +44,16 @@
                                         <option value="2">Perempuan</option>
                                     </select>
                                 </div>
+
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">+62</span>
+                                    <div class="form-floating">
+                                        <input type="number" value="{{ $teacher->telp }}" class="form-control"
+                                            id="telp" name="telp" placeholder="Nomor Telpon" required>
+                                        <label for="telp">Nomor Telpon</label>
+                                    </div>
+                                </div>
+
                                 <div class="mb-3">
                                     <input type="hidden" name="oldImage" value="{{ $teacher->image }}">
                                     <label for="image" class="form-label">Foto</label>
@@ -66,6 +77,16 @@
                                     </div>
                                 </div>
                             </form>
+
+                            <div class="mb-3 text-center">
+                                <form action="/admin/data-guru/reset-password/{{ $teacher->id }}" method="POST"
+                                    class="d-inline-block m-0 p-0 border-0">
+                                    @csrf
+                                    <button class="btn btn-link text-danger p-0"
+                                        onclick="return confirm('Reset Password? Password akan direset menjadi {{ $teacher->nik }}{{ substr($teacher->name, 0, 3) }}')"><i
+                                            class="bi bi-arrow-clockwise me-2"></i>Reset Password</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>

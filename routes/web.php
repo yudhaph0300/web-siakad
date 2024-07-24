@@ -49,7 +49,9 @@ Route::prefix('admin')->group(function () {
     Route::middleware(['auth:admin'])->group(function () {
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin-dashboard');
         Route::resource('/data-siswa', StudentController::class);
+        Route::post('/data-siswa/reset-password/{id}', [StudentController::class, 'resetPassword']);
         Route::resource('/data-guru', TeacherController::class);
+        Route::post('/data-guru/reset-password/{id}', [TeacherController::class, 'resetPassword']);
         Route::resource('/data-kelas', ClassController::class);
         Route::resource('/data-mata-pelajaran', LessonController::class);
         Route::resource('/data-pembelajaran', LearningController::class);
@@ -64,6 +66,7 @@ Route::prefix('admin')->group(function () {
 Route::prefix('student')->group(function () {
     Route::middleware(['auth:student'])->group(function () {
         Route::get('/dashboard', [StudentDashboardContoller::class, 'index'])->name('student-dashboard');
+        Route::post('/dashboard/change-password', [StudentDashboardContoller::class, 'changePassword']);
         Route::resource('/raport', StudentRaportController::class);
     });
 });
@@ -72,6 +75,7 @@ Route::prefix('student')->group(function () {
 Route::prefix('teacher')->group(function () {
     Route::middleware(['auth:teacher'])->group(function () {
         Route::get('/dashboard', [TeacherDashboardController::class, 'index'])->name('teacher-dashboard');
+        Route::post('/dashboard/change-password', [TeacherDashboardController::class, 'changePassword']);
         Route::resource('/data-penilaian', LessonValueController::class);
         Route::get('/import-nilai/{id_learning}', [ImportController::class, 'index']);
         Route::post('/import-nilai/proses', [ImportController::class, 'import'])->name('import-lesson-value');

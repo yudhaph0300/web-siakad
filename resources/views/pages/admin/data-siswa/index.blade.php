@@ -114,6 +114,10 @@
                                         <a href="/admin/data-siswa/{{ $student->id }}/edit"
                                             class="btn-custom-icon color-warning"><i class="bi bi-pencil-square"></i></a>
 
+                                        <a href="https://wa.me/62{{ $student->telp }}?text=**Sistem Informasi Akademik**%0A**MTs Riyadlatul Fallah**%0A%0APassword anda berhasil direset menjadi {{ $student->nis }}{{ substr($student->name, 0, 3) }}%0A%0A*Segera ubah password anda*"
+                                            target="_blank" class="btn-custom-icon color-warning"><i
+                                                class="bi bi-key"></i></a>
+
                                         <form action="/admin/data-siswa/{{ $student->id }}" method="POST"
                                             class="d-inline-block m-0 p-0 border-0">
                                             @method('delete')
