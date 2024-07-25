@@ -18,38 +18,56 @@
                         <div class="mb-3">
                             <label for="nik" class="form-label">NIK</label>
                             <input type="number" class="form-control custom-search" id="nik" name="nik"
-                                placeholder="Masukan nik guru" required>
+                                placeholder="Masukan nik guru" value="{{ old('nik') }}" required>
+                            @error('nik')
+                                <div class="text-danger mt-1">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="name" class="form-label">Nama</label>
                             <input type="text" class="form-control custom-search" id="name" name="name"
-                                placeholder="Masukan nama guru" required>
+                                placeholder="Masukan nama guru" value="{{ old('name') }}" required>
+                            @error('name')
+                                <div class="text-danger mt-1">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="gender" class="form-label">Jenis Kelamin</label>
                             <select name="gender" id="gender" class="form-select custom-search" required>
-                                <option value="1">Laki-laki</option>
-                                <option value="2">Perempuan</option>
+                                <option value="1" {{ old('gender') == 1 ? 'selected' : '' }}>Laki-laki</option>
+                                <option value="2" {{ old('gender') == 2 ? 'selected' : '' }}>Perempuan</option>
                             </select>
+                            @error('gender')
+                                <div class="text-danger mt-1">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="input-group mb-3">
                             <span class="input-group-text">+62</span>
                             <div class="form-floating">
                                 <input type="number" class="form-control" id="telp" name="telp"
-                                    placeholder="Nomor Telpon" required>
+                                    placeholder="Nomor Telpon" value="{{ old('telp') }}" required>
                                 <label for="telp">Nomor Telpon</label>
+                                @error('telp')
+                                    <div class="text-danger mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label for="image" class="form-label">Foto</label>
                             <input class="form-control" type="file" id="image" name="image">
+                            @error('image')
+                                <div class="text-danger mt-1">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="address" class="form-label">Alamat</label>
                             <input type="text" class="form-control custom-search" id="address" name="address"
-                                placeholder="Masukan alamat guru" required>
+                                placeholder="Masukan alamat guru" value="{{ old('address') }}" required>
+                            @error('address')
+                                <div class="text-danger mt-1">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="mb-3">

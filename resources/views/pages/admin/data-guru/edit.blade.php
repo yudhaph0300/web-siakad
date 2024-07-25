@@ -29,28 +29,50 @@
                                 @csrf
                                 <div class="mb-3">
                                     <label for="nik" class="form-label">NIK</label>
-                                    <input type="text" value="{{ $teacher->nik }}" class="form-control custom-search"
-                                        id="nik" name="nik" placeholder="Masukan nik guru" required>
+                                    <input type="number" value="{{ old('nik', $teacher->nik) }}"
+                                        class="form-control custom-search" id="nik" name="nik"
+                                        placeholder="Masukan nik guru" required>
+                                    @error('nik')
+                                        <div class="text-danger mt-1">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Nama</label>
-                                    <input type="text" value="{{ $teacher->name }}" class="form-control custom-search"
-                                        id="name" name="name" placeholder="Masukan nama guru" required>
+                                    <input type="text" value="{{ old('name', $teacher->name) }}"
+                                        class="form-control custom-search" id="name" name="name"
+                                        placeholder="Masukan nama guru" required>
+                                    @error('name')
+                                        <div class="text-danger mt-1">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
                                     <label for="gender" class="form-label">Jenis Kelamin</label>
-                                    <select name="gender" id="gender" class="form-select custom-search" required>
-                                        <option value="1">Laki-laki</option>
-                                        <option value="2">Perempuan</option>
+                                    <select id="gender" name="gender" class="form-select custom-select"
+                                        aria-label="Default select example" required>
+                                        <option value="{{ 1 }}"
+                                            {{ old('gender', $teacher->gender) == 1 ? 'selected' : '' }}>
+                                            Laki-Laki
+                                        </option>
+                                        <option value="{{ 2 }}"
+                                            {{ old('gender', $teacher->gender) == 2 ? 'selected' : '' }}>
+                                            Perempuan
+                                        </option>
                                     </select>
+                                    @error('gender')
+                                        <div class="text-danger mt-1">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">+62</span>
                                     <div class="form-floating">
-                                        <input type="number" value="{{ $teacher->telp }}" class="form-control"
-                                            id="telp" name="telp" placeholder="Nomor Telpon" required>
+                                        <input type="number" value="{{ old('telp', $teacher->telp) }}"
+                                            class="form-control" id="telp" name="telp" placeholder="Nomor Telpon"
+                                            required>
                                         <label for="telp">Nomor Telpon</label>
+                                        @error('telp')
+                                            <div class="text-danger mt-1">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -62,7 +84,11 @@
                                 <div class="mb-3">
                                     <label for="address" class="form-label">Alamat</label>
                                     <input type="text" class="form-control custom-search" id="address" name="address"
-                                        placeholder="Masukan alamat guru" value="{{ $teacher->address }}" required>
+                                        placeholder="Masukan alamat guru" value="{{ old('address', $teacher->address) }}"
+                                        required>
+                                    @error('address')
+                                        <div class="text-danger mt-1">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
                                     <div class="row g-2">

@@ -46,24 +46,33 @@ class TeacherController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nik' => 'required|max:10',
-            'name' => 'required|max:55',
-            'gender' => 'required|max:1',
-            'address' => 'max:255',
-            'image' => 'image|file',
-            'telp' => 'required'
+            'nik' => 'required|numeric|unique:teachers,nik',
+            // nama harus abjad
+            'name' => 'required|string|regex:/^[\pL\s\-]+$/u|max:55',
+            // gender harus 1 atau 2
+            'gender' => 'required|in:1,2',
+            'address' => 'nullable|string|max:255',
+            'image' => 'nullable|image|file|max:2048',
+            // telp berupa angka
+            'telp' => 'required|numeric'
         ]);
 
+        // Jika ada file gambar yang diunggah, simpan file tersebut
         if ($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('teacher-images');
         }
+
+        // Set role, username, dan password default
         $validatedData['role'] = 'teacher';
         $validatedData['username'] = $request->nik;
-        $validatedData['password'] = bcrypt('teacher');
+        $validatedData['password'] = bcrypt($request->nik);
 
-        Teacher::create($validatedData);
-
-        return redirect('/admin/data-guru')->with('success', 'Data guru berhasil ditambahkan');
+        try {
+            Teacher::create($validatedData);
+            return redirect('/admin/data-guru')->with('success', 'Data guru berhasil ditambahkan');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['msg' => 'Terjadi kesalahan saat menambahkan siswa: ' . $e->getMessage()]);
+        }
     }
 
     /**
@@ -105,12 +114,15 @@ class TeacherController extends Controller
         $teacher = Teacher::findOrFail($teacher);
 
         $rules = [
-            'nik' => 'required|max:10',
-            'name' => 'required|max:55',
-            'gender' => 'required|max:1',
-            'address' => 'max:255',
-            'image' => 'image|file',
-            'telp' => 'required'
+            'nik' => 'required|numeric|unique:teachers,nik,' . $teacher->id,
+            // nama harus abjad
+            'name' => 'required|string|regex:/^[\pL\s\-]+$/u|max:55',
+            // gender harus 1 atau 2
+            'gender' => 'required|in:1,2',
+            'address' => 'nullable|string|max:255',
+            'image' => 'nullable|image|file|max:2048',
+            // telp berupa angka
+            'telp' => 'required|numeric'
         ];
 
 
