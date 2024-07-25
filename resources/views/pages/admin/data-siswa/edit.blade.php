@@ -26,17 +26,29 @@
                                 enctype="multipart/form-data">
                                 @method('put')
                                 @csrf
+                                <!-- NIS -->
                                 <div class="mb-3">
                                     <label for="nis" class="form-label">NIS</label>
-                                    <input type="text" value="{{ $student->nis }}" class="form-control custom-search"
-                                        id="nis" name="nis" placeholder="Masukan nis siswa" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="name" class="form-label">Nama</label>
-                                    <input type="text" value="{{ $student->name }}" class="form-control custom-search"
-                                        id="name" name="name" placeholder="Masukan nama siswa" required>
+                                    <input type="number" value="{{ old('nis', $student->nis) }}"
+                                        class="form-control custom-search" id="nis" name="nis"
+                                        placeholder="Masukan nis siswa" required>
+                                    @error('nis')
+                                        <div class="text-danger mt-1">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
+                                <!-- Nama -->
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Nama</label>
+                                    <input type="text" value="{{ old('name', $student->name) }}"
+                                        class="form-control custom-search" id="name" name="name"
+                                        placeholder="Masukan nama siswa" required>
+                                    @error('name')
+                                        <div class="text-danger mt-1">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <!-- Kelas -->
                                 <div class="mb-3">
                                     <label for="id_class" class="form-label">Kelas</label>
                                     <select id="id_class" name="id_class" class="form-select custom-select"
@@ -50,49 +62,77 @@
                                             </option>
                                         @endforeach
                                     </select>
+                                    @error('id_class')
+                                        <div class="text-danger mt-1">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
+                                <!-- Jenis Kelamin -->
                                 <div class="mb-3">
                                     <label for="gender" class="form-label">Jenis Kelamin</label>
                                     <select id="gender" name="gender" class="form-select custom-select"
                                         aria-label="Default select example" required>
-
-                                        <option value="{{ 1 }}" {{ $student->gender == 1 ? 'selected' : '' }}>
+                                        <option value="{{ 1 }}"
+                                            {{ old('gender', $student->gender) == 1 ? 'selected' : '' }}>
                                             Laki-Laki
                                         </option>
-                                        <option value="{{ 2 }}" {{ $student->gender == 2 ? 'selected' : '' }}>
+                                        <option value="{{ 2 }}"
+                                            {{ old('gender', $student->gender) == 2 ? 'selected' : '' }}>
                                             Perempuan
                                         </option>
                                     </select>
+                                    @error('gender')
+                                        <div class="text-danger mt-1">{{ $message }}</div>
+                                    @enderror
                                 </div>
+
+                                <!-- Nomor Telepon -->
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">+62</span>
                                     <div class="form-floating">
-                                        <input type="number" value="{{ $student->telp }}" class="form-control"
-                                            id="telp" name="telp" placeholder="Nomor Telpon" required>
+                                        <input type="number" value="{{ old('telp', $student->telp) }}"
+                                            class="form-control" id="telp" name="telp" placeholder="Nomor Telpon"
+                                            required>
                                         <label for="telp">Nomor Telpon</label>
                                     </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="birthday" class="form-label">Tanggal Lahir</label>
-                                    <input type="text" value="{{ $student->birthday }}"
-                                        class="form-control custom-search" id="birthday" name="birthday"
-                                        placeholder="Masukan tanggal lahir siswa" required>
+                                    @error('telp')
+                                        <div class="text-danger mt-1">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
+                                <!-- Tanggal Lahir -->
+                                <div class="mb-3">
+                                    <label for="birthday" class="form-label">Tanggal Lahir</label>
+                                    <input type="date" value="{{ old('birthday', $student->birthday) }}"
+                                        class="form-control custom-search" id="birthday" name="birthday"
+                                        placeholder="Masukan tanggal lahir siswa" required>
+                                    @error('birthday')
+                                        <div class="text-danger mt-1">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <!-- Foto -->
                                 <div class="mb-3">
                                     <input type="hidden" name="oldImage" value="{{ $student->image }}">
                                     <label for="image" class="form-label">Foto</label>
                                     <input class="form-control" type="file" id="image" name="image">
+                                    @error('image')
+                                        <div class="text-danger mt-1">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
+                                <!-- Alamat -->
                                 <div class="mb-3">
                                     <label for="address" class="form-label">Alamat</label>
-                                    <input type="text" value="{{ $student->address }}"
+                                    <input type="text" value="{{ old('address', $student->address) }}"
                                         class="form-control custom-search" id="address" name="address"
                                         placeholder="Masukan alamat siswa" required>
+                                    @error('address')
+                                        <div class="text-danger mt-1">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
+                                <!-- Tombol Submit dan Cancel -->
                                 <div class="mb-3">
                                     <div class="row g-2">
                                         <div class="col">
@@ -107,11 +147,12 @@
                                 </div>
                             </form>
 
+                            <!-- Reset Password -->
                             <div class="mb-3 text-center">
                                 <form action="/admin/data-siswa/reset-password/{{ $student->id }}" method="POST"
                                     class="d-inline-block m-0 p-0 border-0">
                                     @csrf
-                                    <button class="btn btn-link text-danger p-0"
+                                    <button class="btn btn-link text-danger mt-1 p-0"
                                         onclick="return confirm('Reset Password? Password akan direset menjadi {{ $student->nis }}{{ substr($student->name, 0, 3) }}')"><i
                                             class="bi bi-arrow-clockwise me-2"></i>Reset Password</button>
                                 </form>

@@ -62,31 +62,44 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-
-        // dd($request);
+        // Validasi untuk atribut
         $validatedData = $request->validate([
-            'nis' => 'required|max:10',
-            'name' => 'required|max:55',
-            'gender' => 'required|max:1',
-            'birthday' => 'required',
-            'address' => 'max:255',
-            'image' => 'image|file',
-            'telp' => 'required'
+            // nis harus numerik dan unik dalam tabel siswa
+            'nis' => 'required|numeric|unique:students,nis',
+            // nama harus abjad
+            'name' => 'required|string|regex:/^[\pL\s\-]+$/u|max:55',
+            // gender harus 1 atau 2
+            'gender' => 'required|in:1,2',
+            // birthday berupa date
+            'birthday' => 'required|date',
+            'address' => 'nullable|string|max:255',
+            // image berupa file gambar
+            'image' => 'nullable|image|file|max:2048',
+            // telp berupa angka
+            'telp' => 'required|numeric'
         ]);
 
-
+        // Jika ada file gambar yang diunggah, simpan file tersebut
         if ($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('student-images');
         }
 
+        // Set role, username, dan password default
         $validatedData['role'] = 'student';
         $validatedData['username'] = $request->nis;
         $validatedData['password'] = bcrypt($request->nis);
 
-        Student::create($validatedData);
-
-        return redirect('/admin/data-siswa')->with('success', 'Siswa berhasil ditambahkan');
+        // Lakukan semua pengecekan ketika memenuhi maka buat data student baru
+        try {
+            Student::create($validatedData);
+            // redirect ke halaman data-siswa dengan pesan sukses
+            return redirect('/admin/data-siswa')->with('success', 'Siswa berhasil ditambahkan');
+        } catch (\Exception $e) {
+            // Jika ada kesalahan dalam pembuatan data student, kembalikan dengan pesan kesalahan
+            return redirect('/admin/data-siswa')->withErrors(['msg' => 'Terjadi kesalahan saat menambahkan siswa: ' . $e->getMessage()]);
+        }
     }
+
 
     /**
      * Display the specified resource.
@@ -125,33 +138,44 @@ class StudentController extends Controller
      */
     public function update(Request $request, $student)
     {
-        // dd($request);
+        // Temukan data siswa berdasarkan ID
         $student = Student::findOrFail($student);
 
+        // Aturan validasi
         $rules = [
-            'nis' => 'required|max:10',
-            'name' => 'required|max:55',
-            'gender' => 'required|max:1',
-            'birthday' => 'required',
-            'address' => 'max:255',
-            'image' => 'image|file',
-            'telp' => 'required'
+            'nis' => 'required|numeric|unique:students,nis,' . $student->id,
+            'name' => 'required|string|regex:/^[\pL\s\-]+$/u|max:55',
+            'gender' => 'required|in:1,2',
+            'birthday' => 'required|date',
+            'address' => 'nullable|string|max:255',
+            'image' => 'nullable|image|file|max:2048',
+            'telp' => 'required|numeric'
         ];
+
+        // Validasi data yang dikirimkan
         $validatedData = $request->validate($rules);
+
+        // Update atribut tambahan
         $validatedData['id_class'] = $request->id_class;
         $validatedData['username'] = $request->nis;
+
+        // Jika ada file gambar yang diunggah
         if ($request->file('image')) {
+            // Jika ada gambar lama, hapus dari penyimpanan
             if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
+            // Simpan gambar baru dan tambahkan ke data validasi
             $validatedData['image'] = $request->file('image')->store('student-images');
         }
 
+        // Update data siswa dalam database
+        Student::where('id', $student->id)->update($validatedData);
 
-        Student::where('id', $student->id)
-            ->update($validatedData);
+        // Redirect ke halaman data siswa dengan pesan sukses
         return redirect('/admin/data-siswa')->with('success', 'Data siswa berhasil diupdate');
     }
+
 
     /**
      * Remove the specified resource from storage.
