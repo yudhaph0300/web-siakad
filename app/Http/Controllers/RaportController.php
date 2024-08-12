@@ -73,7 +73,12 @@ class RaportController extends Controller
             DB::raw('
             FORMAT(
                 (
-                    (lesson_values.ko1 + lesson_values.ko2 + lesson_values.sub1 + lesson_values.sub2 + lesson_values.praktik + lesson_values.uts_uas) / 6
+                    (lesson_values.ko1 * 0.08) + 
+                    (lesson_values.ko2 * 0.08) + 
+                    (lesson_values.sub1 * 0.08) + 
+                    (lesson_values.sub2 * 0.08) + 
+                    (lesson_values.praktik * 0.08) + 
+                    (lesson_values.uts_uas * 0.60)
                 ), 2
             ) as nilai
         '),
@@ -81,19 +86,16 @@ class RaportController extends Controller
             CASE
                 WHEN (
                     (lesson_values.ko1 + lesson_values.ko2 + lesson_values.sub1 + lesson_values.sub2 + lesson_values.praktik + lesson_values.uts_uas) / 6
-                ) >= 90 THEN "A"
+                ) >= 88 THEN "A"
                 WHEN (
                     (lesson_values.ko1 + lesson_values.ko2 + lesson_values.sub1 + lesson_values.sub2 + lesson_values.praktik + lesson_values.uts_uas) / 6
-                ) >= 80 THEN "B"
+                ) >= 74 THEN "B"
                 WHEN (
                     (lesson_values.ko1 + lesson_values.ko2 + lesson_values.sub1 + lesson_values.sub2 + lesson_values.praktik + lesson_values.uts_uas) / 6
-                ) >= 70 THEN "C"
-                WHEN (
-                    (lesson_values.ko1 + lesson_values.ko2 + lesson_values.sub1 + lesson_values.sub2 + lesson_values.praktik + lesson_values.uts_uas) / 6
-                ) >= 60 THEN "D"
-                ELSE "E"
+                ) >= 60 THEN "C"
+                ELSE "D"
             END as predikat
-        ')
+            ')
         )
             ->join('learnings', 'lesson_values.id_learning', '=', 'learnings.id')
             ->join('lessons', 'learnings.id_lesson', '=', 'lessons.id')
@@ -124,27 +126,30 @@ class RaportController extends Controller
             DB::raw('
             FORMAT(
                 (
-                    (lesson_values.ko1 + lesson_values.ko2 + lesson_values.sub1 + lesson_values.sub2 + lesson_values.praktik + lesson_values.uts_uas) / 6
+                    (lesson_values.ko1 * 0.08) + 
+                    (lesson_values.ko2 * 0.08) + 
+                    (lesson_values.sub1 * 0.08) + 
+                    (lesson_values.sub2 * 0.08) + 
+                    (lesson_values.praktik * 0.08) + 
+                    (lesson_values.uts_uas * 0.60)
                 ), 2
             ) as nilai
+
         '),
             DB::raw('
             CASE
                 WHEN (
                     (lesson_values.ko1 + lesson_values.ko2 + lesson_values.sub1 + lesson_values.sub2 + lesson_values.praktik + lesson_values.uts_uas) / 6
-                ) >= 90 THEN "A"
+                ) >= 88 THEN "A"
                 WHEN (
                     (lesson_values.ko1 + lesson_values.ko2 + lesson_values.sub1 + lesson_values.sub2 + lesson_values.praktik + lesson_values.uts_uas) / 6
-                ) >= 80 THEN "B"
+                ) >= 74 THEN "B"
                 WHEN (
                     (lesson_values.ko1 + lesson_values.ko2 + lesson_values.sub1 + lesson_values.sub2 + lesson_values.praktik + lesson_values.uts_uas) / 6
-                ) >= 70 THEN "C"
-                WHEN (
-                    (lesson_values.ko1 + lesson_values.ko2 + lesson_values.sub1 + lesson_values.sub2 + lesson_values.praktik + lesson_values.uts_uas) / 6
-                ) >= 60 THEN "D"
-                ELSE "E"
+                ) >= 60 THEN "C"
+                ELSE "D"
             END as predikat
-        ')
+            ')
         )
             ->join('learnings', 'lesson_values.id_learning', '=', 'learnings.id')
             ->join('lessons', 'learnings.id_lesson', '=', 'lessons.id')
