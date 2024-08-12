@@ -337,6 +337,16 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
             'role' => 'teacher'
         ]);
+        \App\Models\Teacher::factory()->create([
+            'nik' => '55555',
+            'name' => 'Edi Santoso',
+            'gender' => 1,
+            'address' => 'Klampisan Tondowulan Plandaan Jombang',
+            'username' => '55555',
+            'telp' => '89698289699',
+            'password' => bcrypt('password'),
+            'role' => 'teacher'
+        ]);
 
 
 
@@ -375,6 +385,14 @@ class DatabaseSeeder extends Seeder
             'id_academic_year' => '1',
             'name' => 'IPS',
         ]);
+        Lesson::create([
+            'id_academic_year' => '1',
+            'name' => 'PPKN',
+        ]);
+        Lesson::create([
+            'id_academic_year' => '1',
+            'name' => 'Seni Budaya',
+        ]);
 
 
         Learning::create([
@@ -449,6 +467,52 @@ class DatabaseSeeder extends Seeder
             'id_teacher' => '4',
             'id_academic_year' => '1'
         ]);
+        Learning::create([
+            'id_class' => '1',
+            'id_lesson' => '5', // ID untuk pelajaran PPKN
+            'id_teacher' => '3',
+            'id_academic_year' => '1'
+        ]);
+
+
+        Learning::create([
+            'id_class' => '2',
+            'id_lesson' => '5', // ID untuk pelajaran PPKN
+            'id_teacher' => '5',
+            'id_academic_year' => '1'
+        ]);
+
+        Learning::create([
+            'id_class' => '3',
+            'id_lesson' => '5', // ID untuk pelajaran PPKN
+            'id_teacher' => '3',
+            'id_academic_year' => '1'
+        ]);
+
+
+        Learning::create([
+            'id_class' => '1',
+            'id_lesson' => '6', // ID untuk pelajaran Seni Budaya
+            'id_teacher' => '4',
+            'id_academic_year' => '1'
+        ]);
+
+        Learning::create([
+            'id_class' => '2',
+            'id_lesson' => '6', // ID untuk pelajaran Seni Budaya
+            'id_teacher' => '2',
+            'id_academic_year' => '1'
+        ]);
+
+        Learning::create([
+            'id_class' => '3',
+            'id_lesson' => '6', // ID untuk pelajaran Seni Budaya
+            'id_teacher' => '4',
+            'id_academic_year' => '1'
+        ]);
+
+
+
 
 
         \App\Models\AcademicYear::factory()->create([
